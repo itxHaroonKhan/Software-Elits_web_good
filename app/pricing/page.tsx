@@ -120,7 +120,7 @@ export default function PricingPage() {
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] pointer-events-none"
           style={{ background: "radial-gradient(ellipse, rgba(124,106,247,0.08) 0%, transparent 60%)" }} />
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 md:pt-44 pb-20 md:pb-24 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 md:pt-44 pb-20 md:pb-24 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {/* Left */}
@@ -182,7 +182,7 @@ export default function PricingPage() {
 
       {/* ════════════════════════════════════════════════════ CARDS ══ */}
       <section className="relative w-full">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 rounded-2xl overflow-hidden border border-white/[0.07]">
             {tiers.map((t, ti) => {
               const price = t.monthly
@@ -279,7 +279,7 @@ export default function PricingPage() {
 
       {/* ═══════════════════════════════════════════ COMPARISON TABLE ══ */}
       <section className="border-t border-white/[0.06] bg-[#07070e]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-20">
           <div className="text-center mb-10">
             <span className="section-label mb-3">Compare Plans</span>
             <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}
@@ -323,7 +323,7 @@ export default function PricingPage() {
 
       {/* ════════════════════════════════════════════════ HOW IT WORKS ══ */}
       <section className="border-t border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-20">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12">
             <div>
               <span className="section-label mb-3">Process</span>
@@ -347,7 +347,7 @@ export default function PricingPage() {
 
       {/* ═══════════════════════════════════════════════ TESTIMONIAL ══ */}
       <section className="border-t border-white/[0.06] bg-[#07070e]">
-        <div className="max-w-4xl mx-auto px-6 md:px-12 py-20 md:py-24 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 py-20 md:py-24 text-center">
           <svg className="w-8 h-8 text-[#7c6af7] mx-auto mb-6 opacity-60" viewBox="0 0 24 24" fill="currentColor">
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
           </svg>
@@ -369,7 +369,7 @@ export default function PricingPage() {
 
       {/* ══════════════════════════════════════════════════════ FAQ ══ */}
       <section className="border-t border-white/[0.06]">
-        <div className="max-w-3xl mx-auto px-6 md:px-12 py-20 md:py-24">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-12 py-20 md:py-24">
           <div className="text-center mb-12">
             <span className="section-label mb-3">FAQ</span>
             <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}
@@ -409,7 +409,7 @@ export default function PricingPage() {
 
       {/* ══════════════════════════════════════════════════ BOTTOM CTA ══ */}
       <section className="border-t border-white/[0.06] bg-[#07070e]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-20">
           <div className="rounded-2xl border border-[#7c6af7]/20 bg-gradient-to-br from-[#7c6af7]/[0.07] to-transparent p-10 md:p-14
                           flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div className="flex flex-col gap-4">

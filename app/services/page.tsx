@@ -1,142 +1,275 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 const services = [
   {
-    slug: "custom-software", number: "01",
-    title: "Custom Software Development",
-    tagline: "Bespoke platforms engineered to your exact specification.",
-    desc: "From complex enterprise platforms to greenfield SaaS products, we design and build software that solves real business problems — written for long-term maintainability, performance, and scale.",
-    bullets: ["Full-stack web applications", "Enterprise system integrations", "Legacy modernisation", "API design & development", "Technical architecture consulting"],
-    image: "https://www.charle.co.uk/assets/images/navigation/nav-services-cta.webp",
+    number: "01",
+    title: "Web Design",
+    desc: "Pixel-perfect, conversion-focused interfaces that leave a lasting impression.",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=600&h=400&fit=crop",
   },
   {
-    slug: "web-mobile", number: "02",
-    title: "Web & Mobile App Development",
-    tagline: "Cross-platform applications that users love.",
-    desc: "High-performance web and mobile apps with pixel-perfect UX. Whether a customer-facing app or internal tool, we deliver products that drive engagement and retention.",
-    bullets: ["React & Next.js web apps", "React Native iOS & Android", "Progressive Web Apps (PWA)", "Performance optimisation", "App Store submission & maintenance"],
-    image: "https://www.charle.co.uk/articles/guide-to-ab-split-testing/images/thumb.jpg",
+    number: "02",
+    title: "Website Development",
+    desc: "High-performance websites engineered for speed, scale, and reliability.",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&h=400&fit=crop",
   },
   {
-    slug: "ai-ml", number: "03",
-    title: "AI & Machine Learning",
-    tagline: "Intelligent systems that give your business an edge.",
-    desc: "Production-ready AI integrations and custom ML models. From LLM-powered features to predictive analytics engines — real AI without the hype.",
-    bullets: ["LLM integration & fine-tuning", "Predictive analytics models", "Computer vision systems", "Recommendation engines", "AI workflow automation"],
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid8.webp",
+    number: "03",
+    title: "Mobile App Development",
+    desc: "Native & cross-platform apps designed for seamless user experiences.",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=600&h=400&fit=crop",
   },
   {
-    slug: "cloud-devops", number: "04",
-    title: "Cloud Infrastructure & DevOps",
-    tagline: "Scalable infrastructure built for reliability and speed.",
-    desc: "From initial AWS setup to multi-region Kubernetes clusters — we handle the operational complexity so your team can focus on shipping.",
-    bullets: ["AWS, GCP & Azure architecture", "Kubernetes & Docker", "CI/CD pipeline design", "Infrastructure as Code (Terraform)", "Cost optimisation & monitoring"],
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid6.webp",
+    number: "04",
+    title: "E-Commerce Solutions",
+    desc: "End-to-end online stores with secure payments and frictionless checkout.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&h=400&fit=crop",
   },
   {
-    slug: "ui-ux", number: "05",
+    number: "05",
+    title: "SEO Optimization",
+    desc: "Data-backed strategies that earn top rankings and sustainable traffic.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&h=400&fit=crop",
+  },
+  {
+    number: "06",
+    title: "Social Media Marketing",
+    desc: "Targeted campaigns that build communities and drive real conversions.",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=600&h=400&fit=crop",
+  },
+  {
+    number: "07",
     title: "UI/UX Design",
-    tagline: "Design that converts, delights, and differentiates.",
-    desc: "Our design team works alongside engineers to produce interfaces that are not only beautiful but also intuitive, accessible, and aligned with your brand.",
-    bullets: ["Product discovery & research", "Wireframing & prototyping", "Design systems", "Usability testing", "Accessibility (WCAG 2.1)"],
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid3.webp",
+    desc: "Human-centered design that makes every interaction feel effortless.",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=600&h=400&fit=crop",
+  },
+  {
+    number: "08",
+    title: "Logo & Branding",
+    desc: "Distinctive brand identities that tell your story at a glance.",
+    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=600&h=400&fit=crop",
+  },
+  {
+    number: "09",
+    title: "WordPress Development",
+    desc: "Custom WordPress builds that are as powerful as they are manageable.",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=600&h=400&fit=crop",
+  },
+  {
+    number: "10",
+    title: "Website Maintenance",
+    desc: "24/7 monitoring, updates, backups, and security for peace of mind.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&h=400&fit=crop",
+  },
+  {
+    number: "11",
+    title: "Domain & Hosting",
+    desc: "Fast, secure hosting with reliable domain management and support.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600&h=400&fit=crop",
+  },
+  {
+    number: "12",
+    title: "Video & Animation",
+    desc: "Motion content that tells your brand story with cinematic quality.",
+    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=600&h=400&fit=crop",
   },
 ];
 
 const process = [
-  { step: "01", title: "Discovery", desc: "Deep-dive workshops to understand your goals, users, and technical constraints." },
-  { step: "02", title: "Architecture", desc: "We design the technical blueprint — stack selection, data models, system design." },
-  { step: "03", title: "Build", desc: "Agile sprints with daily updates. You see progress every single day." },
-  { step: "04", title: "Ship & Scale", desc: "Production deployment, monitoring, and ongoing support as you grow." },
+  { step: "01", title: "Discovery",   desc: "Deep-dive sessions to understand your goals, audience, and technical requirements." },
+  { step: "02", title: "Strategy",    desc: "Tech stack selection, project roadmap, and a clear timeline aligned to your budget." },
+  { step: "03", title: "Design",      desc: "Wireframes, prototypes, and pixel-perfect UI — approved before development starts." },
+  { step: "04", title: "Development", desc: "Clean, tested, documented code shipped in agile sprints with daily updates." },
+  { step: "05", title: "Launch",      desc: "Deployment, performance testing, SEO setup, and ongoing support after go-live." },
 ];
 
 export default function ServicesPage() {
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+
   return (
-    <main className="bg-[#05050a] text-white min-h-screen">
+    <main className="bg-[#05050a] text-white min-h-screen overflow-x-hidden">
 
       {/* ── Hero ── */}
-      <section className="relative w-full overflow-hidden border-b border-white/[0.06]">
-        <div className="absolute -top-40 left-1/4 w-[700px] h-[700px] pointer-events-none"
+      <section className="relative w-full border-b border-white/[0.06]">
+        <div className="absolute -top-40 left-1/4 w-[600px] h-[600px] pointer-events-none"
           style={{ background: "radial-gradient(circle, rgba(124,106,247,0.07) 0%, transparent 65%)" }} />
-        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 md:pt-44 pb-16 relative z-10">
-          <div className="block space-y-6 max-w-4xl">
-            <span className="section-label">What We Do</span>
-            <h1 style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}
-              className="font-extrabold tracking-tight leading-[0.93] text-white">
-              End-to-end software{" "}
-              <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
-                expertise.
-              </span>
-            </h1>
-            <p className="text-zinc-500 text-base md:text-xl max-w-xl leading-relaxed font-light pb-12 md:pb-20">
-              From a single microservice to a complete platform rebuild — we cover
-              every layer of the modern software stack.
-            </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 md:pt-44 pb-14 relative z-10">
+          <span className="section-label mb-6">What We Do</span>
+          <h1 className="font-extrabold tracking-tight leading-[0.92] text-white mt-4 mb-5"
+            style={{ fontSize: "clamp(2.2rem, 6vw, 5.5rem)" }}>
+            Our{" "}
+            <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
+              SERVICES
+            </span>
+          </h1>
+          <p className="text-zinc-500 text-sm sm:text-base md:text-xl max-w-xl leading-relaxed font-light pb-6">
+            12 services. One team. Everything you need to build, grow, and dominate online.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/packages" className="btn btn-accent btn-md sm:btn-lg">View Packages</Link>
+            <Link href="/contact"  className="btn btn-outline btn-md sm:btn-lg">Get a Free Quote</Link>
           </div>
         </div>
       </section>
 
-      {/* ── Service list ── */}
-      <section className="relative w-full overflow-hidden block">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          {services.map((s, i) => (
-            <div key={s.slug}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start
-                         py-20 md:py-28 border-b border-white/[0.06]">
-
-              {/* Image */}
-              <div className={`lg:col-span-5 ${i % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/[0.07]
-                                hover:border-[#7c6af7]/30 transition-colors duration-500">
-                  <img src={s.image} alt={s.title}
-                    className="w-full h-full object-cover opacity-75 hover:opacity-100 transition-opacity duration-500" />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className={`lg:col-span-7 flex flex-col gap-5 ${i % 2 === 1 ? "lg:order-1" : ""}`}>
-                <span className="text-[#7c6af7] font-mono text-sm font-semibold">{s.number}</span>
-                <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)" }}
-                  className="font-bold tracking-tight text-white leading-tight">
-                  {s.title}
-                </h2>
-                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-light italic border-l-2 border-[#7c6af7]/40 pl-4">
-                  {s.tagline}
-                </p>
-                <p className="text-zinc-500 text-sm md:text-base leading-relaxed font-light">{s.desc}</p>
-                <ul className="flex flex-col gap-2.5 mt-2">
-                  {s.bullets.map(b => (
-                    <li key={b} className="flex items-center gap-3 text-sm text-zinc-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#7c6af7] shrink-0" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-                <Link href={`/services/${s.slug}`} className="btn btn-outline btn-md w-fit mt-2">
-                  Learn More →
-                </Link>
-              </div>
+      {/* ── 12 Services Bento Grid ── */}
+      <section className="w-full border-b border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-28">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 md:mb-14">
+            <div>
+              <span className="section-label mb-3">12 Services Available</span>
+              <h2 className="font-bold tracking-tight text-white mt-3"
+                style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)" }}>
+                Everything under one roof.
+              </h2>
             </div>
-          ))}
+            <Link href="/contact"
+              className="text-xs font-bold uppercase tracking-[0.14em] text-[#a89df9]
+                         border border-[#7c6af7]/30 px-4 py-2 rounded-full
+                         hover:bg-[#7c6af7]/10 transition-all duration-200 shrink-0 w-fit">
+              Start a Project →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {services.map((s) => {
+              const isHovered = hoveredId === s.number;
+              return (
+                <div
+                  key={s.number}
+                  onMouseEnter={() => setHoveredId(s.number)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  className={`
+                    group relative overflow-hidden rounded-3xl min-h-[240px]
+                    border transition-all duration-500 cursor-pointer
+                    flex flex-col justify-between p-7
+                    ${isHovered
+                      ? "border-white/[0.18] shadow-[0_0_48px_rgba(255,255,255,0.04)]"
+                      : "border-white/[0.06]"
+                    }
+                  `}
+                >
+                  {/* Background image with scale */}
+                  <div
+                    className={`
+                      absolute inset-0 bg-cover bg-center
+                      transition-all duration-700
+                      ${isHovered ? "scale-105 opacity-100" : "scale-100 opacity-50"}
+                    `}
+                    style={{ backgroundImage: `url(${s.image})` }}
+                  />
+
+                  {/* Gradient overlay */}
+                  <div className={`
+                    absolute inset-0 transition-all duration-500
+                    ${isHovered
+                      ? "bg-gradient-to-t from-black/90 via-black/60 to-black/40"
+                      : "bg-gradient-to-t from-black/95 via-black/80 to-black/60"
+                    }
+                  `} />
+
+                  <div className="relative z-10 flex flex-col h-full gap-3">
+                    <span className="text-white/20 text-xs font-bold uppercase tracking-[0.18em] font-mono">
+                      {s.number}
+                    </span>
+                    <div className="flex-1" />
+                    <div className="flex flex-col gap-2">
+                      <h3 className="font-bold text-white tracking-tight leading-snug text-lg md:text-xl">
+                        {s.title}
+                      </h3>
+                      <p className={`
+                        text-sm leading-relaxed font-light max-w-xs transition-all duration-300
+                        ${isHovered ? "text-white/60" : "text-white/35"}
+                      `}>
+                        {s.desc}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between mt-3">
+                      <Link
+                        href="/contact"
+                        className={`
+                          inline-flex items-center justify-center
+                          w-9 h-9 rounded-full border transition-all duration-300
+                          ${isHovered
+                            ? "bg-[#7c6af7] border-[#7c6af7] text-white shadow-[0_0_16px_rgba(124,106,247,0.4)] translate-x-0.5 -translate-y-0.5"
+                            : "bg-transparent border-white/20 text-white/50"
+                          }
+                        `}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                          <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </Link>
+                      <span className={`
+                        text-[10px] uppercase tracking-[0.14em] font-semibold
+                        border border-white/[0.10] text-white/30 px-3 py-1.5 rounded-full
+                        transition-all duration-300
+                        ${isHovered ? "opacity-100" : "opacity-0"}
+                      `}>
+                        Learn more
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* ── Process ── */}
-      <section className="relative w-full overflow-hidden block bg-[#07070e] border-t border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32">
+      {/* ── 5-Step Process ── */}
+      <section className="w-full bg-[#07070e] border-b border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-28">
           <span className="section-label mb-4">How We Work</span>
-          <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
-            className="font-bold tracking-tight text-white mb-16">
-            Our process, simplified.
+          <h2 className="font-bold tracking-tight text-white mb-12 md:mb-16 mt-3"
+            style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)" }}>
+            Our 5-step process.
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {process.map(p => (
+
+          {/* Desktop: horizontal strip */}
+          <div className="hidden md:grid grid-cols-5 gap-0 rounded-2xl overflow-hidden border border-white/[0.06]">
+            {process.map((p, i) => (
               <div key={p.step}
-                className="flex flex-col gap-4 p-8 rounded-2xl border border-white/[0.07]
-                           bg-[#05050a] hover:border-[#7c6af7]/35 transition-colors duration-300">
-                <span className="text-[#7c6af7] text-xs font-bold uppercase tracking-[0.2em]">Step {p.step}</span>
-                <h3 className="text-xl font-bold text-white">{p.title}</h3>
-                <p className="text-zinc-500 text-sm leading-relaxed font-light">{p.desc}</p>
+                className={`relative flex flex-col gap-4 p-6 lg:p-7 bg-[#05050a]
+                            hover:bg-[#0a0a14] transition-colors duration-200
+                            ${i < process.length - 1 ? "border-r border-white/[0.06]" : ""}`}>
+                <span className="text-[#7c6af7] font-mono text-xs font-bold tracking-[0.2em]">{p.step}</span>
+                <h3 className="text-white font-semibold text-sm lg:text-base">{p.title}</h3>
+                <p className="text-zinc-600 text-xs sm:text-sm leading-relaxed font-light">{p.desc}</p>
+                {i < process.length - 1 && (
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10
+                                  w-5 h-5 rounded-full bg-[#07070e] border border-[#7c6af7]/30
+                                  flex items-center justify-center">
+                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                      <path d="M2 4h4M4 2l2 2-2 2" stroke="#7c6af7" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile: vertical list */}
+          <div className="flex flex-col md:hidden gap-0">
+            {process.map((p, i) => (
+              <div key={p.step} className="flex items-start gap-4 py-6 border-b border-white/[0.06] last:border-b-0">
+                <div className="flex flex-col items-center shrink-0">
+                  <span className="w-8 h-8 rounded-full bg-[#7c6af7]/15 border border-[#7c6af7]/30
+                                   flex items-center justify-center text-[#7c6af7] text-[10px] font-bold">
+                    {p.step}
+                  </span>
+                  {i < process.length - 1 && (
+                    <div className="w-px flex-1 min-h-[2rem] bg-white/[0.06] mt-2" />
+                  )}
+                </div>
+                <div className="pb-2 flex-1">
+                  <h3 className="text-white font-semibold text-base mb-1">{p.title}</h3>
+                  <p className="text-zinc-500 text-sm leading-relaxed font-light">{p.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -144,20 +277,24 @@ export default function ServicesPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="border-t border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 flex flex-col md:flex-row
-                        items-start md:items-center justify-between gap-8">
+      <section className="w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-28
+                        flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Not sure where to start?</h2>
-            <p className="text-zinc-500 text-base font-light max-w-md">
-              Book a free 30-minute discovery call. We&apos;ll help you figure out exactly what you need.
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+              Not sure where to start?
+            </h2>
+            <p className="text-zinc-500 text-sm sm:text-base font-light max-w-md">
+              Book a free consultation. We&apos;ll help you figure out exactly what you need.
             </p>
           </div>
-          <Link href="/contact" className="btn btn-accent btn-lg shrink-0">
-            Book a Discovery Call
-          </Link>
+          <div className="flex flex-wrap gap-3 shrink-0">
+            <Link href="/contact"  className="btn btn-accent btn-md sm:btn-lg">Book Free Call</Link>
+            <Link href="/packages" className="btn btn-outline btn-md sm:btn-lg">View Packages</Link>
+          </div>
         </div>
       </section>
+
     </main>
   );
 }

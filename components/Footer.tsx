@@ -10,31 +10,28 @@ const footerCols = [
   {
     title: "Our Work",
     links: [
-      { label: "Case Studies",  href: "/work" },
-      { label: "FinanceFlow",   href: "/work/financeflow" },
-      { label: "MediTrack",     href: "/work/meditrack" },
-      { label: "ShopForce",     href: "/work/shopforce" },
-      { label: "DataSphere",    href: "/work/datasphere" },
+      { label: "Portfolio",   href: "/portfolio" },
+      { label: "Projects",    href: "/projects"  },
     ],
   },
   {
     title: "Services",
     links: [
-      { label: "Custom Software", href: "/services/custom-software" },
-      { label: "Web & Mobile",    href: "/services/web-mobile" },
-      { label: "AI & ML",         href: "/services/ai-ml" },
-      { label: "Cloud & DevOps",  href: "/services/cloud-devops" },
-      { label: "UI/UX Design",    href: "/services/ui-ux" },
+      { label: "Web Design",       href: "/services" },
+      { label: "Development",      href: "/services" },
+      { label: "Mobile Apps",      href: "/services" },
+      { label: "E-Commerce",       href: "/services" },
+      { label: "SEO & Marketing",  href: "/services" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Us",   href: "/about" },
-      { label: "Pricing",    href: "/pricing" },
-      { label: "Resources",  href: "/resources" },
-      { label: "Contact Us", href: "/contact" },
-      { label: "Careers",    href: "/careers" },
+      { label: "About Us",      href: "/about"        },
+      { label: "Agency",        href: "/agency"       },
+      { label: "Technologies",  href: "/technologies" },
+      { label: "Packages",      href: "/packages"     },
+      { label: "Contact Us",    href: "/contact"      },
     ],
   },
 ];
@@ -239,10 +236,10 @@ export default function Footer() {
                     Email
                   </span>
                   <a
-                    href="mailto:hello@softwareelites.co.uk"
+                    href="mailto:info@softwareelites.com"
                     className="text-zinc-400 hover:text-[#a89df9] text-sm transition-colors duration-150"
                   >
-                    hello@softwareelites.co.uk
+                    info@softwareelites.com
                   </a>
                 </div>
                 <div>
@@ -250,24 +247,24 @@ export default function Footer() {
                     Phone
                   </span>
                   <a
-                    href="tel:+442030263652"
+                    href="tel:+18775134503"
                     className="text-zinc-400 hover:text-[#a89df9] text-sm transition-colors duration-150"
                   >
-                    +44 20 3026 3652
+                    +1 877-513-4503
                   </a>
                 </div>
                 <div>
                   <span className="text-zinc-600 text-[10px] uppercase tracking-wider block mb-1.5">
                     Location
                   </span>
-                  <span className="text-zinc-400 text-sm">London, United Kingdom</span>
+                  <span className="text-zinc-400 text-sm">New York, United States</span>
                 </div>
                 <div>
                   <span className="text-zinc-600 text-[10px] uppercase tracking-wider block mb-1.5">
                     Hours
                   </span>
                   <div className="text-zinc-500 text-xs space-y-0.5">
-                    <p>Mon – Fri: 9:00 – 18:00 GMT</p>
+                    <p>Mon – Fri: 9:00 AM – 6:00 PM EST</p>
                     <p>Sat – Sun: Closed</p>
                   </div>
                 </div>
@@ -282,11 +279,11 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-7">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
               <span className="text-zinc-600 text-xs">
-                &copy; {new Date().getFullYear()} Software Elites Ltd. All rights reserved.
+                &copy; {new Date().getFullYear()} Software Elites. All rights reserved.
               </span>
               <span className="hidden md:inline text-zinc-700">·</span>
               <span className="text-zinc-700 text-xs">
-                Registered in England &amp; Wales · Co. No. 12345678
+                New York, United States
               </span>
             </div>
 

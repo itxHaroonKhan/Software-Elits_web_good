@@ -57,10 +57,10 @@ export default function ResourcesPage() {
       <section className="relative w-full overflow-hidden border-b border-white/[0.06]">
         <div className="absolute -top-40 right-0 w-[600px] h-[600px] pointer-events-none"
           style={{ background: "radial-gradient(circle, rgba(124,106,247,0.07) 0%, transparent 65%)" }} />
-        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 md:pt-44 pb-20 md:pb-28 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 md:pt-44 pb-20 md:pb-28 relative z-10">
           <div className="block space-y-6 max-w-3xl">
             <span className="section-label">Knowledge Base</span>
-            <h1 style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}
+            <h1 style={{ fontSize: "clamp(2.2rem, 6vw, 5.5rem)" }}
               className="font-extrabold tracking-tight leading-[0.92] text-white">
               Resources &{" "}
               <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
@@ -76,7 +76,7 @@ export default function ResourcesPage() {
 
       {/* ── Category bar ── */}
       <div className="sticky top-16 z-30 bg-[#05050a]/95 backdrop-blur-xl border-b border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
           <div className="flex items-center gap-2 overflow-x-auto py-4" style={{ scrollbarWidth: "none" }}>
             {categories.map((cat, i) => (
               <span key={cat}
@@ -93,7 +93,7 @@ export default function ResourcesPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-20">
 
         {/* ── Featured ── */}
         <Link href={`/resources/${featured.slug}`}
@@ -154,7 +154,7 @@ export default function ResourcesPage() {
 
       {/* ── Newsletter ── */}
       <section className="border-t border-white/[0.06] bg-[#07070e]">
-        <div className="max-w-3xl mx-auto px-6 md:px-12 py-24 md:py-32 text-center flex flex-col items-center gap-6">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-12 py-24 md:py-32 text-center flex flex-col items-center gap-6">
           <span className="section-label">Newsletter</span>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             Engineering insights in your inbox.

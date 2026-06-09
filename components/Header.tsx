@@ -5,12 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Our Work",  href: "/work"      },
-  { label: "Services",  href: "/services"  },
-  { label: "Pricing",   href: "/pricing"   },
-  { label: "About Us",  href: "/about"     },
-  { label: "Resources", href: "/resources" },
-  { label: "Careers",   href: "/careers"   },
+  { label: "Home",         href: "/"              },
+  { label: "About",        href: "/about"         },
+  { label: "Services",     href: "/services"      },
+  { label: "Portfolio",    href: "/portfolio"     },
+  { label: "Projects",     href: "/projects"      },
+  { label: "Packages",     href: "/packages"      },
+  { label: "Technologies", href: "/technologies"  },
+  { label: "Agency",       href: "/agency"        },
 ];
 
 export default function Header() {
@@ -164,11 +166,11 @@ export default function Header() {
 
         {/* Bottom strip */}
         <div className="px-6 py-5 border-t border-white/[0.05] flex items-center justify-between">
-          <a href="mailto:hello@softwareelites.co.uk"
+          <a href="mailto:info@softwareelites.com"
              className="text-zinc-500 text-sm hover:text-white transition-colors duration-200">
-            hello@softwareelites.co.uk
+            info@softwareelites.com
           </a>
-          <span className="text-zinc-700 text-xs">USA</span>
+          <span className="text-zinc-700 text-xs">New York, USA</span>
         </div>
 
       </div>

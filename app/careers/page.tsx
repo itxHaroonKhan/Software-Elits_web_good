@@ -50,7 +50,7 @@ export default function CareersPage() {
       <section className="relative w-full overflow-hidden border-b border-white/[0.06]">
         <div className="absolute -top-40 left-1/4 w-[600px] h-[600px] pointer-events-none"
           style={{ background: "radial-gradient(circle, rgba(124,106,247,0.08) 0%, transparent 65%)" }} />
-        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 md:pt-44 pb-20 md:pb-28 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 md:pt-44 pb-20 md:pb-28 relative z-10">
           <div className="block space-y-6 max-w-3xl">
             <span className="section-label">Careers</span>
             <h1 style={{ fontSize: "clamp(2.8rem, 7vw, 6.5rem)" }}
@@ -70,7 +70,7 @@ export default function CareersPage() {
 
       {/* ── Perks ── */}
       <section className="relative w-full overflow-hidden block border-b border-white/[0.06] bg-[#07070e]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-20 md:py-28">
           <span className="section-label mb-4">Why Join Us</span>
           <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
             className="font-bold tracking-tight text-white mb-14">
@@ -93,7 +93,7 @@ export default function CareersPage() {
 
       {/* ── Open Roles ── */}
       <section className="relative w-full overflow-hidden block border-b border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-20 md:py-28">
           <span className="section-label mb-4">Open Positions</span>
           <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
             className="font-bold tracking-tight text-white mb-14">
@@ -136,7 +136,7 @@ export default function CareersPage() {
 
       {/* ── Speculative ── */}
       <section>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-24 md:py-32
                         flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Don&apos;t see your role?</h2>
