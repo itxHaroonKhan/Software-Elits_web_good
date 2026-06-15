@@ -116,8 +116,16 @@ export function generateStaticParams() {
   return Object.keys(projects).map((slug) => ({ slug }));
 }
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const p = projects[params.slug];
+// ✅ CHANGE 1: function ko async banaya
+// ✅ CHANGE 2: params ka type ab Promise<{ slug: string }>
+export default async function CaseStudyPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  // ✅ CHANGE 3: params ko await karke slug nikala
+  const { slug } = await params;
+  const p = projects[slug];
   if (!p) notFound();
 
   return (

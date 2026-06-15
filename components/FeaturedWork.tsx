@@ -26,28 +26,6 @@ const projects = [
     tags:        ["Mobile App", "React Native", "Healthcare"],
     year:        "2024",
   },
-  {
-    slug:        "shopforce",
-    number:      "03",
-    brand:       "ShopForce",
-    tagline:     "Headless Commerce Platform",
-    description: "Next.js storefront connected to a custom GraphQL API — blazing-fast pages and a composable checkout for a high-growth retailer.",
-    image:       "https://www.charle.co.uk/assets/images/home/grid/grid6.webp",
-    stats:       [{ value: "+55%", label: "Conversions" }, { value: "3×", label: "Page Speed" }],
-    tags:        ["Next.js", "Headless", "API Design"],
-    year:        "2023",
-  },
-  {
-    slug:        "datasphere",
-    number:      "04",
-    brand:       "DataSphere",
-    tagline:     "AI-Powered Analytics SaaS",
-    description: "B2B analytics platform with ML models for churn prediction, revenue forecasting, and automated anomaly detection.",
-    image:       "https://www.charle.co.uk/assets/images/home/grid/grid3.webp",
-    stats:       [{ value: "+72%", label: "Retention" }, { value: "£5M+", label: "ARR Impact" }],
-    tags:        ["AI / ML", "SaaS", "Python"],
-    year:        "2023",
-  },
 ];
 
 export default function FeaturedWork() {
@@ -61,7 +39,7 @@ export default function FeaturedWork() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* ── Section header ── */}
-        <div className="flex items-end justify-between pt-28 md:pt-36 pb-8
+        <div className="flex items-end justify-between pt-10 md:pt-14 pb-8
                         border-b border-white/[0.06]">
           <h2
             className="font-bold tracking-tight leading-none text-white"
@@ -87,7 +65,7 @@ export default function FeaturedWork() {
         </div>
 
         {/* ── Project rows ── */}
-        <div className="flex flex-col pb-28 md:pb-36">
+        <div className="flex flex-col pb-10 md:pb-14">
           {projects.map((p, i) => (
             <div
               key={p.slug}
@@ -95,16 +73,16 @@ export default function FeaturedWork() {
               onMouseLeave={() => setHovered(null)}
               className={`
                 group relative grid grid-cols-1 lg:grid-cols-12
-                gap-8 lg:gap-12 items-center
-                py-12 md:py-14
+                gap-4 lg:gap-6 items-center
+                py-5 md:py-6
                 border-b border-white/[0.06]
                 transition-all duration-500
-                ${hovered && hovered !== p.slug ? "opacity-30" : "opacity-100"}
+                ${hovered && hovered !== p.slug ? "opacity-60" : "opacity-100"}
               `}
             >
 
               {/* ── Left side ── */}
-              <div className="lg:col-span-7 flex items-start gap-8 md:gap-12">
+              <div className="lg:col-span-7 flex items-start gap-4 md:gap-6">
 
                 {/* Index number */}
                 <span
