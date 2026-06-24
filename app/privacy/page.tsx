@@ -22,7 +22,7 @@ export default function PrivacyPage() {
           {[
             {
               title: "1. Who We Are",
-              body: "Software Elites Ltd is registered in England & Wales (Company No. 12345678). Our registered office is London, United Kingdom. We are the data controller for personal data collected through this website.",
+              body: "Software Elites LLC is registered in Virginia, United States. Our registered office is 5142 Glenbeigh Rd, Richmond, VA 23234. We are the data controller for personal data collected through this website.",
             },
             {
               title: "2. What Data We Collect",
@@ -46,11 +46,11 @@ export default function PrivacyPage() {
             },
             {
               title: "7. Your Rights",
-              body: "Under GDPR, you have the right to access, rectify, erase, restrict, or port your personal data. You also have the right to object to processing and to withdraw consent. Contact privacy@softwareelites.co.uk to exercise any right.",
+              body: "You have the right to access, rectify, erase, restrict, or port your personal data. You also have the right to object to processing and to withdraw consent. Contact privacy@softwareelites.com to exercise any right.",
             },
             {
               title: "8. Contact",
-              body: "For any privacy enquiries, contact our Data Protection Officer at privacy@softwareelites.co.uk or write to: Software Elites Ltd, London, United Kingdom.",
+              body: "For any privacy enquiries, contact us at privacy@softwareelites.com or write to: Software Elites LLC, 5142 Glenbeigh Rd, Richmond, VA 23234, United States.",
             },
           ].map(({ title, body }) => (
             <div key={title}>

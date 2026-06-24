@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 const articles = [
@@ -46,10 +49,35 @@ const articles = [
 ];
 
 const categories = ["All", "Engineering", "AI & ML", "Cloud & DevOps", "Mobile", "Commerce", "Healthcare"];
-const featured = articles.find(a => a.featured)!;
-const rest     = articles.filter(a => !a.featured);
 
 export default function ResourcesPage() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [nlEmail, setNlEmail] = useState("");
+  const [nlStatus, setNlStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+
+  const filtered = activeCategory === "All"
+    ? articles
+    : articles.filter(a => a.category === activeCategory);
+
+  const featured = filtered.find(a => a.featured) ?? filtered[0];
+  const rest     = filtered.filter(a => a !== featured);
+
+  const handleNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!nlEmail) return;
+    setNlStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: nlEmail }),
+      });
+      setNlStatus(res.ok ? "done" : "error");
+    } catch {
+      setNlStatus("error");
+    }
+  };
+
   return (
     <main className="bg-[#05050a] text-white min-h-screen">
 
@@ -78,16 +106,17 @@ export default function ResourcesPage() {
       <div className="sticky top-16 z-30 bg-[#05050a]/95 backdrop-blur-xl border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
           <div className="flex items-center gap-2 overflow-x-auto py-4" style={{ scrollbarWidth: "none" }}>
-            {categories.map((cat, i) => (
-              <span key={cat}
+            {categories.map((cat) => (
+              <button key={cat}
+                onClick={() => setActiveCategory(cat)}
                 className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.12em]
-                            border whitespace-nowrap shrink-0 cursor-default
-                            ${i === 0
+                            border whitespace-nowrap shrink-0 transition-all duration-200
+                            ${activeCategory === cat
                               ? "bg-[#7c6af7] border-[#7c6af7] text-white"
-                              : "bg-transparent border-white/[0.10] text-zinc-500 hover:border-white/25 hover:text-white transition-all duration-200"
+                              : "bg-transparent border-white/[0.10] text-zinc-500 hover:border-white/25 hover:text-white"
                             }`}>
                 {cat}
-              </span>
+              </button>
             ))}
           </div>
         </div>
@@ -162,13 +191,29 @@ export default function ResourcesPage() {
           <p className="text-zinc-500 text-base font-light max-w-sm">
             One email per week. No fluff — just practical engineering content from the team.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
-            <input type="email" placeholder="your@email.com"
-              className="flex-1 bg-white/[0.05] border border-white/[0.10] rounded-full
-                         px-5 py-3 text-sm text-white placeholder:text-zinc-600
-                         focus:outline-none focus:border-[#7c6af7]/50" />
-            <button className="btn btn-accent btn-md shrink-0">Subscribe</button>
-          </div>
+          {nlStatus === "done" ? (
+            <p className="text-[#a89df9] text-base font-semibold">You&apos;re subscribed. See you in your inbox!</p>
+          ) : (
+            <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+              <input
+                type="email"
+                value={nlEmail}
+                onChange={(e) => setNlEmail(e.target.value)}
+                placeholder="your@email.com"
+                required
+                className="flex-1 bg-white/[0.05] border border-white/[0.10] rounded-full
+                           px-5 py-3 text-sm text-white placeholder:text-zinc-600
+                           focus:outline-none focus:border-[#7c6af7]/50"
+              />
+              <button
+                type="submit"
+                disabled={nlStatus === "loading"}
+                className="btn btn-accent btn-md shrink-0 disabled:opacity-60"
+              >
+                {nlStatus === "loading" ? "Subscribing..." : nlStatus === "error" ? "Try Again" : "Subscribe"}
+              </button>
+            </form>
+          )}
         </div>
       </section>
     </main>

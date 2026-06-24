@@ -147,7 +147,7 @@ export default function ProjectsPage() {
             {[
               { value: "95+",   label: "Total Projects"   },
               { value: "300+",  label: "Happy Clients"    },
-              { value: "15+",   label: "Years Experience" },
+              { value: "3+",    label: "Years Experience" },
               { value: "100%",  label: "Satisfaction Rate" },
             ].map((s, i) => (
               <div key={i}

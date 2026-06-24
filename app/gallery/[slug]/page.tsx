@@ -3,6 +3,14 @@ import { notFound } from "next/navigation";
 import { allGalleryItems } from "@/data/gallery";
 
 const clientWork: Record<string, { name: string; url: string; image?: string }[]> = {
+  "branding-identity": [
+    { name: "BBC Ice Cream",     url: "https://www.bbcicecream.com/" },
+    { name: "Muc-Off",           url: "https://muc-off.com/" },
+    { name: "War Paint",         url: "https://warpaintformen.com/" },
+    { name: "Sunna Musk",        url: "https://sunnamusk.com/" },
+    { name: "Joelandson Fabrics",url: "https://www.joelandsonfabrics.com/" },
+    { name: "111Skin",           url: "https://111skin.com/" },
+  ],
   "e-commerce": [
     { name: "Candy Kittens",     url: "https://candykittens.co.uk/",       image: "/cart_1.png" },
     { name: "Just Wears",        url: "https://just-wears.com/",           image: "/cart_2.png" },
@@ -126,6 +134,20 @@ const galleryPages: Record<string, {
   stats: { value: string; label: string }[];
   bullets: { heading: string; text: string }[];
 }> = {
+  "branding-identity": {
+    title: "Branding & Identity",
+    tagline: "A brand that means something — and gets remembered.",
+    desc: "From naming and strategy through to full visual identity systems, we help businesses define who they are and express it consistently across every touchpoint. Whether you're launching a new brand or refreshing an existing one, we make it count.",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&h=600&fit=crop",
+    tags: ["Brand Strategy", "Logo Design", "Design Systems", "Typography", "Figma"],
+    stats: [{ value: "200+", label: "Brands Launched" }, { value: "4.9★", label: "Client Rating" }, { value: "100%", label: "On-Brand Delivery" }, { value: "2wk", label: "Identity Sprint" }],
+    bullets: [
+      { heading: "Brand Strategy", text: "Positioning, messaging frameworks, and audience research to anchor every creative decision in commercial logic." },
+      { heading: "Visual Identity", text: "Logo, colour palette, typography, and iconography — delivered as a complete, scalable design system." },
+      { heading: "Brand Guidelines", text: "Comprehensive style guides your team and agencies can follow to stay consistent at any scale." },
+      { heading: "Rebranding", text: "Sensitive, strategic refreshes that evolve your brand without alienating your existing audience." },
+    ],
+  },
   "e-commerce": {
     title: "E-Commerce Development",
     tagline: "High-converting online stores built for scale.",
@@ -490,7 +512,7 @@ export default async function GalleryPage({
             Ready to get started?
           </h2>
           <p className="text-zinc-400 text-lg mb-10 max-w-xl mx-auto">
-            Tell us about your project and we'll come back with a clear plan and a fixed price.
+            Tell us about your project and we&apos;ll come back with a clear plan and a fixed price.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/contact" className="btn btn-accent btn-lg">

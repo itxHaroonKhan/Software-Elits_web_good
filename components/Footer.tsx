@@ -88,12 +88,30 @@ const quickLinks = [
 
 export default function Footer() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [nlEmail, setNlEmail] = useState("");
+  const [nlStatus, setNlStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
 
   useEffect(() => {
     const onScroll = () => setShowScrollTop(window.scrollY > 400);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!nlEmail) return;
+    setNlStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: nlEmail }),
+      });
+      setNlStatus(res.ok ? "done" : "error");
+    } catch {
+      setNlStatus("error");
+    }
+  };
 
   return (
     <>
@@ -136,16 +154,30 @@ export default function Footer() {
               <p className="text-white font-semibold text-sm mb-1">Stay in the loop</p>
               <p className="text-zinc-600 text-xs">Engineering insights delivered weekly.</p>
             </div>
-            <div className="flex gap-2 w-full sm:w-auto">
-              <input type="email" placeholder="your@email.com"
-                className="flex-1 sm:w-56 bg-white/[0.04] border border-white/[0.09] rounded-full
-                           px-4 py-2.5 text-xs text-white placeholder:text-zinc-600
-                           focus:outline-none focus:border-[#7c6af7]/50" />
-              <button className="btn btn-accent shrink-0"
-                style={{ padding: "0.55rem 1.1rem", fontSize: "0.7rem" }}>
-                Subscribe
-              </button>
-            </div>
+            {nlStatus === "done" ? (
+              <p className="text-[#a89df9] text-xs font-semibold">Thanks! You&apos;re subscribed.</p>
+            ) : (
+              <form onSubmit={handleNewsletter} className="flex gap-2 w-full sm:w-auto">
+                <input
+                  type="email"
+                  value={nlEmail}
+                  onChange={(e) => setNlEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  required
+                  className="flex-1 sm:w-56 bg-white/[0.04] border border-white/[0.09] rounded-full
+                             px-4 py-2.5 text-xs text-white placeholder:text-zinc-600
+                             focus:outline-none focus:border-[#7c6af7]/50"
+                />
+                <button
+                  type="submit"
+                  disabled={nlStatus === "loading"}
+                  className="btn btn-accent shrink-0 disabled:opacity-60"
+                  style={{ padding: "0.55rem 1.1rem", fontSize: "0.7rem" }}
+                >
+                  {nlStatus === "loading" ? "..." : nlStatus === "error" ? "Retry" : "Subscribe"}
+                </button>
+              </form>
+            )}
           </div>
 
           {/* ── Column grid ── */}
@@ -247,17 +279,17 @@ export default function Footer() {
                     Phone
                   </span>
                   <a
-                    href="tel:+18775134503"
+                    href="tel:+18042804086"
                     className="text-zinc-400 hover:text-[#a89df9] text-sm transition-colors duration-150"
                   >
-                    +1 877-513-4503
+                    +1 804-280-4086
                   </a>
                 </div>
                 <div>
                   <span className="text-zinc-600 text-[10px] uppercase tracking-wider block mb-1.5">
                     Location
                   </span>
-                  <span className="text-zinc-400 text-sm">New York, United States</span>
+                  <span className="text-zinc-400 text-sm">5142 Glenbeigh Rd, Richmond VA 23234</span>
                 </div>
                 <div>
                   <span className="text-zinc-600 text-[10px] uppercase tracking-wider block mb-1.5">
@@ -283,7 +315,7 @@ export default function Footer() {
               </span>
               <span className="hidden md:inline text-zinc-700">·</span>
               <span className="text-zinc-700 text-xs">
-                New York, United States
+                Richmond, VA, United States
               </span>
             </div>
 

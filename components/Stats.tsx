@@ -2,7 +2,7 @@ export default function Stats() {
   const statsData = [
     { value: "650+", label: "Projects\nDelivered"  },
     { value: "180+", label: "Active\nClients"      },
-    { value: "15+",  label: "Years in\nBusiness"   },
+    { value: "3+",   label: "Years in\nBusiness"   },
     { value: "45+",  label: "Expert\nTeam"         },
   ];
 

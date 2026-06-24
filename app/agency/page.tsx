@@ -107,7 +107,7 @@ export default function AgencyPage() {
               {[
                 { value: "500+", label: "Projects Delivered" },
                 { value: "300+", label: "Happy Clients"       },
-                { value: "15+",  label: "Years Experience"    },
+                { value: "3+",   label: "Years Experience"    },
                 { value: "50+",  label: "Team Members"        },
               ].map((s, i) => (
                 <div key={i} className="bg-[#05050a] flex flex-col gap-2 p-8 md:p-10">

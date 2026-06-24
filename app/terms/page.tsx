@@ -34,7 +34,7 @@ export default function TermsPage() {
             },
             {
               title: "4. Payment Terms",
-              body: "Payment terms are specified in the relevant SOW. Standard terms are 50% upfront and 50% on delivery. Invoices are due within 30 days. Late payments accrue interest at 8% per annum above the Bank of England base rate.",
+              body: "Payment terms are specified in the relevant SOW. Standard terms are 50% upfront and 50% on delivery. Invoices are due within 30 days. Late payments accrue interest at 8% per annum above the US Federal Reserve base rate.",
             },
             {
               title: "5. Confidentiality",
@@ -50,7 +50,7 @@ export default function TermsPage() {
             },
             {
               title: "8. Governing Law",
-              body: "These terms are governed by the laws of England & Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England & Wales.",
+              body: "These terms are governed by the laws of the Commonwealth of Virginia, United States. Any disputes shall be subject to the exclusive jurisdiction of the courts of Virginia, USA.",
             },
           ].map(({ title, body }) => (
             <div key={title}>

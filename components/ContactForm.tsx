@@ -59,10 +59,29 @@ export default function ContactForm() {
         : [...p.services, s],
     }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1500);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.error ?? "Something went wrong. Please try again.");
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -94,9 +113,9 @@ export default function ContactForm() {
               {/* Contact details */}
               <div className="flex flex-col gap-5 pt-6 border-t border-white/[0.06]">
                 {[
-                  { label: "Phone",    icon: "📞", value: "+1 877-513-4503",        href: "tel:+18775134503" },
-                  { label: "Email",    icon: "✉",  value: "info@softwareelites.com", href: "mailto:info@softwareelites.com" },
-                  { label: "Location", icon: "📍", value: "New York, United States", href: undefined },
+                  { label: "Phone",    icon: "📞", value: "+1 804-280-4086",                    href: "tel:+18042804086" },
+                  { label: "Email",    icon: "✉",  value: "info@softwareelites.com",            href: "mailto:info@softwareelites.com" },
+                  { label: "Location", icon: "📍", value: "5142 Glenbeigh Rd, Richmond VA 23234", href: undefined },
                   { label: "Hours",    icon: "🕐", value: "Mon–Fri · 9AM–6PM EST",  href: undefined },
                 ].map(item => (
                   <div key={item.label} className="flex items-start gap-4">
@@ -236,6 +255,10 @@ export default function ContactForm() {
                                  transition-colors duration-200 resize-none w-full" />
                   </div>
 
+                  {error && (
+                    <p className="text-red-400 text-sm text-center">{error}</p>
+                  )}
+
                   <button type="submit" disabled={loading}
                     className="btn btn-accent btn-lg w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed">
                     {loading ? (
@@ -316,9 +339,9 @@ export default function ContactForm() {
               </h2>
             </div>
             <div className="flex flex-wrap gap-3 shrink-0">
-              <a href="tel:+18775134503"
+              <a href="tel:+18042804086"
                 className="btn btn-accent btn-lg">
-                +1 877-513-4503
+                +1 804-280-4086
               </a>
               <a href="/packages" className="btn btn-outline btn-lg">View Packages</a>
             </div>

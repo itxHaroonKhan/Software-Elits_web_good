@@ -7,72 +7,84 @@ const services = [
   {
     number: "01",
     title: "Web Design",
+    slug: "website-design",
     desc: "Pixel-perfect, conversion-focused interfaces that leave a lasting impression.",
     image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "02",
     title: "Website Development",
+    slug: "custom-software",
     desc: "High-performance websites engineered for speed, scale, and reliability.",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "03",
     title: "Mobile App Development",
+    slug: "web-mobile",
     desc: "Native & cross-platform apps designed for seamless user experiences.",
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "04",
     title: "E-Commerce Solutions",
+    slug: "ecommerce",
     desc: "End-to-end online stores with secure payments and frictionless checkout.",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "05",
     title: "SEO Optimization",
+    slug: "seo",
     desc: "Data-backed strategies that earn top rankings and sustainable traffic.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "06",
     title: "Social Media Marketing",
+    slug: "social-media",
     desc: "Targeted campaigns that build communities and drive real conversions.",
     image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "07",
     title: "UI/UX Design",
+    slug: "ui-ux",
     desc: "Human-centered design that makes every interaction feel effortless.",
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "08",
     title: "Logo & Branding",
+    slug: "logo-branding",
     desc: "Distinctive brand identities that tell your story at a glance.",
     image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "09",
     title: "WordPress Development",
+    slug: "wordpress",
     desc: "Custom WordPress builds that are as powerful as they are manageable.",
     image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "10",
     title: "Website Maintenance",
+    slug: "website-maintenance",
     desc: "24/7 monitoring, updates, backups, and security for peace of mind.",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "11",
     title: "Domain & Hosting",
+    slug: "domain-hosting",
     desc: "Fast, secure hosting with reliable domain management and support.",
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=600&h=400&fit=crop",
   },
   {
     number: "12",
     title: "Video & Animation",
+    slug: "video-animation",
     desc: "Motion content that tells your brand story with cinematic quality.",
     image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=600&h=400&fit=crop",
   },
@@ -106,7 +118,7 @@ export default function ServicesPage() {
             </span>
           </h1>
           <p className="text-zinc-500 text-sm sm:text-base md:text-xl max-w-xl leading-relaxed font-light pb-6">
-            12 services. One team. Everything you need to build, grow, and dominate online.
+            {services.length} services. One team. Everything you need to build, grow, and dominate online.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/packages" className="btn btn-accent btn-md sm:btn-lg">View Packages</Link>
@@ -120,7 +132,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-28">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 md:mb-14">
             <div>
-              <span className="section-label mb-3">12 Services Available</span>
+              <span className="section-label mb-3">{services.length} Services Available</span>
               <h2 className="font-bold tracking-tight text-white mt-3"
                 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)" }}>
                 Everything under one roof.
@@ -189,7 +201,7 @@ export default function ServicesPage() {
                     </div>
                     <div className="flex items-center justify-between mt-3">
                       <Link
-                        href="/contact"
+                        href={`/services/${s.slug}`}
                         className={`
                           inline-flex items-center justify-center
                           w-9 h-9 rounded-full border transition-all duration-300

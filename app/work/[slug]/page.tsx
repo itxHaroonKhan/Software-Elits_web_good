@@ -116,14 +116,11 @@ export function generateStaticParams() {
   return Object.keys(projects).map((slug) => ({ slug }));
 }
 
-// ✅ CHANGE 1: function ko async banaya
-// ✅ CHANGE 2: params ka type ab Promise<{ slug: string }>
 export default async function CaseStudyPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  // ✅ CHANGE 3: params ko await karke slug nikala
   const { slug } = await params;
   const p = projects[slug];
   if (!p) notFound();
@@ -233,7 +230,7 @@ export default async function CaseStudyPage({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {p.images.map((img, i) => (
               <div key={i} className="aspect-[4/3] rounded-2xl overflow-hidden border border-white/[0.07]">
-                <img src={img} alt="" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" />
+                <img src={img} alt={`${p.brand} project screenshot ${i + 1}`} className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" />
               </div>
             ))}
           </div>

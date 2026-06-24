@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Careers | Software Elites",
+  description: "Join the Software Elites team. We're hiring engineers, designers, and strategists who love building exceptional digital products.",
+};
 
 const perks = [
   { icon: "💰", title: "Competitive Salary",  desc: "Top-quartile pay benchmarked annually against industry data." },
@@ -24,7 +30,7 @@ const openRoles = [
   },
   {
     title: "ML Engineer",
-    type: "Full-time · Hybrid (London)", dept: "AI & ML",
+    type: "Full-time · Hybrid (Richmond, VA)", dept: "AI & ML",
     desc: "Design and deploy production ML models and LLM-powered features.",
     skills: ["Python", "PyTorch", "FastAPI", "AWS SageMaker"],
   },
@@ -125,7 +131,8 @@ export default function CareersPage() {
                     ))}
                   </div>
                 </div>
-                <Link href="/contact" className="btn btn-outline btn-md shrink-0 whitespace-nowrap">
+                <Link href={`/careers/apply?role=${encodeURIComponent(role.title)}`}
+                  className="btn btn-outline btn-md shrink-0 whitespace-nowrap">
                   Apply Now →
                 </Link>
               </div>
@@ -145,9 +152,9 @@ export default function CareersPage() {
               you in mind for future openings.
             </p>
           </div>
-          <a href="mailto:careers@softwareelites.co.uk" className="btn btn-accent btn-lg shrink-0">
-            Send Speculative CV
-          </a>
+          <Link href="/careers/apply?role=Speculative Application" className="btn btn-accent btn-lg shrink-0">
+            Apply Now →
+          </Link>
         </div>
       </section>
     </main>

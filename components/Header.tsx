@@ -34,55 +34,78 @@ export default function Header() {
     <>
       {/* ═══════════════════════════════ NAVBAR ═══════════════════════════ */}
       <header className={`
-        fixed inset-x-0 top-0 z-50 h-16
+        fixed inset-x-0 top-0 z-50 h-20
         transition-all duration-500
         ${scrolled
-          ? "bg-[#07070a]/95 backdrop-blur-xl border-b border-white/[0.07] shadow-[0_1px_40px_rgba(0,0,0,0.7)]"
-          : "bg-transparent border-b border-white/[0.05]"
+          ? "bg-[#07070a]/90 backdrop-blur-2xl shadow-[0_2px_60px_rgba(0,0,0,0.8)]"
+          : "bg-transparent"
         }
       `}>
 
-        <div className="h-full max-w-7xl mx-auto px-6 lg:px-10
+        {/* Gradient border bottom */}
+        <div className={`
+          absolute bottom-0 inset-x-0 h-px
+          transition-opacity duration-500
+          ${scrolled
+            ? "bg-gradient-to-r from-transparent via-[#7c6af7]/40 to-transparent opacity-100"
+            : "bg-white/[0.06] opacity-100"
+          }
+        `} />
+
+        <div className="h-full max-w-7xl mx-auto px-6 lg:px-12
                         flex items-center justify-between gap-8">
 
           {/* ── Logo ─────────────────────────────────────────────────── */}
-          <Link href="/" aria-label="Software Elites" className="shrink-0">
+          <Link href="/" aria-label="Software Elites" className="shrink-0 group">
             <Image
               src="/Logoo.png"
               alt="Software Elites"
-              width={150}
-              height={40}
-              className="h-8 w-auto object-contain mix-blend-screen"
+              width={180}
+              height={48}
+              className="h-11 w-auto object-contain mix-blend-screen
+                         transition-transform duration-300 group-hover:scale-[1.03]"
               priority
             />
           </Link>
 
           {/* ── Desktop nav ──────────────────────────────────────────── */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map(({ label, href }) => (
               <Link
                 key={href}
                 href={href}
-                className="text-sm font-medium text-white/45 hover:text-white
-                           transition-colors duration-200
-                           relative
-                           after:absolute after:-bottom-1 after:left-0
-                           after:h-[1.5px] after:w-0 after:rounded-full
-                           after:bg-gradient-to-r after:from-[#7c6af7] after:to-[#5a78f0]
-                           after:transition-[width] after:duration-300
-                           hover:after:w-full"
+                className="px-3 py-2 rounded-lg text-[13.5px] font-medium text-white/50
+                           hover:text-white hover:bg-white/[0.06]
+                           transition-all duration-200
+                           relative group"
               >
                 {label}
+                <span className="absolute bottom-1 left-3 right-3 h-px rounded-full
+                                 bg-gradient-to-r from-[#7c6af7] to-[#5a78f0]
+                                 scale-x-0 group-hover:scale-x-100
+                                 transition-transform duration-300 origin-left" />
               </Link>
             ))}
           </nav>
 
           {/* ── Right: Contact + hamburger ───────────────────────────── */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
 
             {/* Contact CTA */}
-            <Link href="/contact" className="btn btn-accent btn-sm hidden lg:inline-flex">
-              Contact
+            <Link
+              href="/contact"
+              className="hidden lg:inline-flex items-center gap-2
+                         px-5 py-2.5 rounded-full text-sm font-semibold text-white
+                         bg-gradient-to-r from-[#7c6af7] to-[#5a78f0]
+                         shadow-[0_0_20px_rgba(124,106,247,0.4)]
+                         hover:shadow-[0_0_32px_rgba(124,106,247,0.6)]
+                         hover:scale-[1.04] active:scale-[0.97]
+                         transition-all duration-200"
+            >
+              <span>Get in Touch</span>
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+              </svg>
             </Link>
 
             {/* Hamburger */}
@@ -90,7 +113,8 @@ export default function Header() {
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
               className="lg:hidden flex flex-col justify-center items-center
-                         w-10 h-10 gap-[5px] group"
+                         w-11 h-11 gap-[5px] rounded-lg hover:bg-white/[0.06]
+                         transition-colors duration-200"
             >
               <span className={`block w-6 h-[1.5px] bg-white rounded-full
                                 transition-all duration-300
@@ -120,7 +144,7 @@ export default function Header() {
       `}>
 
         {/* Top spacer (same height as header) */}
-        <div className="h-16 shrink-0 border-b border-white/[0.05]" />
+        <div className="h-20 shrink-0 border-b border-white/[0.05]" />
 
         {/* Links */}
         <nav className="flex flex-col flex-1 px-6 pt-8 pb-10 overflow-y-auto">
@@ -151,15 +175,18 @@ export default function Header() {
             onClick={() => setMobileOpen(false)}
             style={{ transitionDelay: mobileOpen ? `${navLinks.length * 50 + 80}ms` : "0ms" }}
             className={`
-              mt-10 flex items-center justify-center
+              mt-10 flex items-center justify-center gap-2
               py-4 rounded-full text-base font-semibold
               bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] text-white
-              shadow-[0_0_24px_rgba(124,106,247,0.35)]
+              shadow-[0_0_28px_rgba(124,106,247,0.4)]
               active:scale-[0.98] transition-all duration-300
               ${mobileOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
             `}
           >
-            Contact Us
+            Get in Touch
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+            </svg>
           </Link>
 
         </nav>
@@ -170,7 +197,7 @@ export default function Header() {
              className="text-zinc-500 text-sm hover:text-white transition-colors duration-200">
             info@softwareelites.com
           </a>
-          <span className="text-zinc-700 text-xs">New York, USA</span>
+          <span className="text-zinc-700 text-xs">Richmond, VA 23234</span>
         </div>
 
       </div>

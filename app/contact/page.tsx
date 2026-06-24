@@ -1,5 +1,10 @@
-import Link from "next/link";
+import { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact Us | Software Elites",
+  description: "Get in touch with Software Elites. Tell us about your project and we'll get back to you within 24 hours.",
+};
 
 export default function ContactPage() {
   return (
@@ -25,7 +30,7 @@ export default function ContactPage() {
                 and we&apos;ll get back to you within 24 hours.
               </p>
               <div className="flex flex-wrap gap-3 pt-2">
-                <a href="tel:+18775134503" className="btn btn-accent btn-lg">
+                <a href="tel:+18042804086" className="btn btn-accent btn-lg">
                   Call Now
                 </a>
                 <a href="mailto:info@softwareelites.com" className="btn btn-outline btn-lg">

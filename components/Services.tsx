@@ -118,7 +118,7 @@ export default function Services() {
           </div>
           <div className="flex items-center gap-4 md:pb-2">
             <span className="text-white/30 text-[11px] font-semibold uppercase tracking-[0.22em]">
-              12 Services Available
+              {services.length} Services Available
             </span>
             <Link href="/services"
               className="text-xs font-bold uppercase tracking-[0.14em] text-[#a89df9]

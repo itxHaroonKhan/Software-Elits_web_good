@@ -6,36 +6,72 @@ import Link from "next/link";
 const categories = ["All Projects", "Web Design", "Mobile Apps", "Branding", "Video & Animation"];
 
 const projects = [
-  // Web Design
-  { id: 1, title: "LuxeStore E-Commerce",       category: "Web Design",         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&h=400&fit=crop", year: "2024" },
-  { id: 2, title: "FinTech Dashboard UI",        category: "Web Design",         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&h=400&fit=crop", year: "2024" },
-  { id: 3, title: "SaaS Landing Page",           category: "Web Design",         image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=600&h=400&fit=crop", year: "2024" },
-  { id: 4, title: "Real Estate Portal",          category: "Web Design",         image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=600&h=400&fit=crop", year: "2023" },
-  { id: 5, title: "Education Platform",          category: "Web Design",         image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&h=400&fit=crop", year: "2023" },
-  { id: 6, title: "Corporate Agency Site",       category: "Web Design",         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&h=400&fit=crop", year: "2023" },
-  // Mobile Apps
-  { id: 7, title: "Healthcare Mobile App",       category: "Mobile Apps",        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=600&h=400&fit=crop", year: "2024" },
-  { id: 8, title: "Restaurant Ordering App",     category: "Mobile Apps",        image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=600&h=400&fit=crop", year: "2024" },
-  { id: 9, title: "Fitness Tracker App",         category: "Mobile Apps",        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&h=400&fit=crop", year: "2023" },
-  { id: 10, title: "Travel & Booking App",       category: "Mobile Apps",        image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=600&h=400&fit=crop", year: "2023" },
-  // Branding
-  { id: 11, title: "Luxury Brand Identity",      category: "Branding",           image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=600&h=400&fit=crop", year: "2024" },
-  { id: 12, title: "Tech Startup Branding",      category: "Branding",           image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?q=80&w=600&h=400&fit=crop", year: "2024" },
-  { id: 13, title: "Food & Beverage Identity",   category: "Branding",           image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600&h=400&fit=crop", year: "2023" },
-  { id: 14, title: "Fashion Brand Package",      category: "Branding",           image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=600&h=400&fit=crop", year: "2023" },
-  // Video & Animation
-  { id: 15, title: "Product Animation Reel",     category: "Video & Animation",  image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=600&h=400&fit=crop", year: "2024" },
-  { id: 16, title: "Corporate Explainer Video",  category: "Video & Animation",  image: "https://images.unsplash.com/photo-1536240478700-b869ad10e128?q=80&w=600&h=400&fit=crop", year: "2024" },
-  { id: 17, title: "Social Media Ad Campaign",   category: "Video & Animation",  image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=600&h=400&fit=crop", year: "2023" },
-  { id: 18, title: "2D Brand Animation",         category: "Video & Animation",  image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?q=80&w=600&h=400&fit=crop", year: "2023" },
+  // Web Design (14)
+  { id: 1,  slug: "luxestore-ecommerce",        title: "LuxeStore E-Commerce",         category: "Web Design",        image: "/portfolio/portfolio_web1.webp",  year: "2024" },
+  { id: 2,  slug: "fintech-dashboard",           title: "FinTech Dashboard UI",          category: "Web Design",        image: "/portfolio/portfolio_web2.webp",  year: "2024" },
+  { id: 3,  slug: "saas-landing",                title: "SaaS Landing Page",             category: "Web Design",        image: "/portfolio/portfolio_web3.webp",  year: "2024" },
+  { id: 4,  slug: "real-estate-portal",          title: "Real Estate Portal",            category: "Web Design",        image: "/portfolio/portfolio_web4.webp",  year: "2023" },
+  { id: 5,  slug: "education-platform",          title: "Education Platform",            category: "Web Design",        image: "/portfolio/portfolio_web5.webp",  year: "2023" },
+  { id: 6,  slug: "corporate-agency",            title: "Corporate Agency Site",         category: "Web Design",        image: "/portfolio/portfolio_web6.webp",  year: "2023" },
+  { id: 19, slug: "crypto-trading-platform",     title: "Crypto Trading Platform",       category: "Web Design",        image: "/portfolio/portfolio_web19.webp", year: "2024" },
+  { id: 20, slug: "medical-dashboard",           title: "Medical Dashboard",             category: "Web Design",        image: "/portfolio/portfolio_web20.webp", year: "2024" },
+  { id: 21, slug: "hotel-booking-website",       title: "Hotel Booking Website",         category: "Web Design",        image: "/portfolio/portfolio_web21.webp", year: "2024" },
+  { id: 22, slug: "event-management-portal",     title: "Event Management Portal",       category: "Web Design",        image: "/portfolio/portfolio_web22.webp", year: "2023" },
+  { id: 23, slug: "legal-services-website",      title: "Legal Services Website",        category: "Web Design",        image: "/portfolio/portfolio_web23.webp", year: "2023" },
+  { id: 24, slug: "architecture-studio-site",    title: "Architecture Studio Site",      category: "Web Design",        image: "/portfolio/portfolio_web24.webp", year: "2023" },
+  { id: 27, slug: "e-wallet-app-web",            title: "E-Wallet Web App",              category: "Web Design",        image: "/portfolio/portfolio_web27.webp", year: "2024" },
+  { id: 28, slug: "grocery-delivery-web",        title: "Grocery Delivery Platform",     category: "Web Design",        image: "/portfolio/portfolio_web28.webp", year: "2024" },
+  // Mobile Apps (12)
+  { id: 7,  slug: "healthcare-mobile",           title: "Healthcare Mobile App",         category: "Mobile Apps",       image: "/portfolio/portfolio_web7.webp",  year: "2024" },
+  { id: 8,  slug: "restaurant-ordering",         title: "Restaurant Ordering App",       category: "Mobile Apps",       image: "/portfolio/portfolio_web8.webp",  year: "2024" },
+  { id: 9,  slug: "fitness-tracker",             title: "Fitness Tracker App",           category: "Mobile Apps",       image: "/portfolio/portfolio_web9.webp",  year: "2023" },
+  { id: 10, slug: "travel-booking",              title: "Travel & Booking App",          category: "Mobile Apps",       image: "/portfolio/portfolio_web10.webp", year: "2023" },
+  { id: 29, slug: "social-networking-app",       title: "Social Networking App",         category: "Mobile Apps",       image: "/portfolio/portfolio_web29.webp", year: "2024" },
+  { id: 30, slug: "news-media-app",              title: "News & Media App",              category: "Mobile Apps",       image: "/portfolio/portfolio_web30.webp", year: "2024" },
+  { id: 31, slug: "meditation-app",              title: "Meditation & Wellness App",     category: "Mobile Apps",       image: "/portfolio/portfolio_web31.webp", year: "2024" },
+  { id: 32, slug: "job-portal-app",              title: "Job Portal App",                category: "Mobile Apps",       image: "/portfolio/portfolio_web32.webp", year: "2023" },
+  { id: 33, slug: "real-estate-mobile-app",      title: "Real Estate Mobile App",        category: "Mobile Apps",       image: "/portfolio/portfolio_web33.webp", year: "2023" },
+  { id: 34, slug: "music-streaming-app",         title: "Music Streaming App",           category: "Mobile Apps",       image: "/portfolio/portfolio_web34.webp", year: "2023" },
+  { id: 35, slug: "ride-sharing-app",            title: "Ride Sharing App",              category: "Mobile Apps",       image: "/portfolio/portfolio_web35.webp", year: "2023" },
+  { id: 36, slug: "banking-app",                 title: "Banking & Finance App",         category: "Mobile Apps",       image: "/portfolio/portfolio_web36.webp", year: "2024" },
+  // Branding (11)
+  { id: 11, slug: "luxury-brand",                title: "Luxury Brand Identity",         category: "Branding",          image: "/portfolio/portfolio_web11.webp", year: "2024" },
+  { id: 12, slug: "tech-startup-branding",       title: "Tech Startup Branding",         category: "Branding",          image: "/portfolio/portfolio_web12.webp", year: "2024" },
+  { id: 13, slug: "food-beverage-identity",      title: "Food & Beverage Identity",      category: "Branding",          image: "/portfolio/portfolio_web13.webp", year: "2023" },
+  { id: 14, slug: "fashion-brand-package",       title: "Fashion Brand Package",         category: "Branding",          image: "/portfolio/portfolio_web14.webp", year: "2023" },
+  { id: 37, slug: "coffee-brand-identity",       title: "Coffee Brand Identity",         category: "Branding",          image: "/portfolio/portfolio_web37.webp", year: "2024" },
+  { id: 38, slug: "wellness-brand-package",      title: "Wellness Brand Package",        category: "Branding",          image: "/portfolio/portfolio_web38.webp", year: "2024" },
+  { id: 39, slug: "sports-brand-design",         title: "Sports Brand Design",           category: "Branding",          image: "/portfolio/portfolio_web39.webp", year: "2023" },
+  { id: 40, slug: "pet-care-brand",              title: "Pet Care Brand Identity",       category: "Branding",          image: "/portfolio/portfolio_web40.webp", year: "2023" },
+  { id: 41, slug: "bakery-brand-identity",       title: "Bakery Brand Identity",         category: "Branding",          image: "/portfolio/portfolio_web41.webp", year: "2023" },
+  { id: 42, slug: "tech-company-rebrand",        title: "Tech Company Rebrand",          category: "Branding",          image: "/portfolio/portfolio_web42.webp", year: "2024" },
+  { id: 43, slug: "cosmetics-brand-package",     title: "Cosmetics Brand Package",       category: "Branding",          image: "/portfolio/portfolio_web43.webp", year: "2024" },
+  // Video & Animation (17)
+  { id: 15, slug: "product-animation",           title: "Product Animation Reel",        category: "Video & Animation", image: "/portfolio/portfolio_web15.webp", year: "2024" },
+  { id: 16, slug: "corporate-explainer",         title: "Corporate Explainer Video",     category: "Video & Animation", image: "/portfolio/portfolio_web16.webp", year: "2024" },
+  { id: 17, slug: "social-media-campaign",       title: "Social Media Ad Campaign",      category: "Video & Animation", image: "/portfolio/portfolio_web17.webp", year: "2023" },
+  { id: 18, slug: "2d-brand-animation",          title: "2D Brand Animation",            category: "Video & Animation", image: "/portfolio/portfolio_web18.webp", year: "2023" },
+  { id: 45, slug: "brand-documentary-film",      title: "Brand Documentary Film",        category: "Video & Animation", image: "/portfolio/portfolio_web45.webp", year: "2024" },
+  { id: 46, slug: "product-launch-video",        title: "Product Launch Video",          category: "Video & Animation", image: "/portfolio/portfolio_web46.webp", year: "2024" },
+  { id: 47, slug: "testimonial-ad-series",       title: "Testimonial Ad Series",         category: "Video & Animation", image: "/portfolio/portfolio_web47.webp", year: "2024" },
+  { id: 48, slug: "motion-graphics-package",     title: "Motion Graphics Package",       category: "Video & Animation", image: "/portfolio/portfolio_web48.webp", year: "2023" },
+  { id: 49, slug: "trade-show-reel",             title: "Trade Show Highlight Reel",     category: "Video & Animation", image: "/portfolio/portfolio_web49.webp", year: "2023" },
+  { id: 50, slug: "instagram-story-series",      title: "Instagram Story Series",        category: "Video & Animation", image: "/portfolio/portfolio_web50.webp", year: "2023" },
+  { id: 51, slug: "youtube-channel-intro",       title: "YouTube Channel Intro",         category: "Video & Animation", image: "/portfolio/portfolio_web51.webp", year: "2024" },
+  { id: 52, slug: "3d-logo-animation",           title: "3D Logo Animation",             category: "Video & Animation", image: "/portfolio/portfolio_web52.webp", year: "2024" },
+  { id: 53, slug: "event-highlight-video",       title: "Event Highlight Video",         category: "Video & Animation", image: "/portfolio/portfolio_web53.webp", year: "2023" },
+  { id: 54, slug: "recruitment-campaign-video",  title: "Recruitment Campaign Video",    category: "Video & Animation", image: "/portfolio/portfolio_web54.webp", year: "2023" },
+  { id: 55, slug: "app-demo-video",              title: "App Demo & Promo Video",        category: "Video & Animation", image: "/portfolio/portfolio_web55.webp", year: "2024" },
+  { id: 56, slug: "whiteboard-animation",        title: "Whiteboard Animation",          category: "Video & Animation", image: "/portfolio/portfolio_web56.webp", year: "2023" },
+  { id: 57, slug: "corporate-interview-series",  title: "Corporate Interview Series",    category: "Video & Animation", image: "/portfolio/portfolio_web57.webp", year: "2024" },
 ];
 
-const counts: Record<string, number> = {
-  "Web Design": 18,
-  "Mobile Apps": 10,
-  "Branding": 8,
-  "Video & Animation": 6,
-};
+const counts: Record<string, number> = categories.reduce((acc, cat) => {
+  if (cat !== "All Projects") {
+    acc[cat] = projects.filter(p => p.category === cat).length;
+  }
+  return acc;
+}, {} as Record<string, number>);
 
 export default function PortfolioPage() {
   const [active, setActive] = useState("All Projects");
@@ -94,7 +130,7 @@ export default function PortfolioPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map(p => (
-            <div key={p.id}
+            <Link key={p.id} href={`/portfolio/${p.slug}`}
               className="group relative rounded-2xl overflow-hidden border border-white/[0.07]
                          hover:border-[#7c6af7]/35 transition-all duration-400 cursor-pointer">
               <div className="aspect-[4/3] overflow-hidden">
@@ -120,7 +156,7 @@ export default function PortfolioPage() {
                   {p.category}
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

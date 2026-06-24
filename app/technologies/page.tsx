@@ -66,7 +66,7 @@ const process = [
 ];
 
 const highlights = [
-  { value: "15+", label: "Years Experience" },
+  { value: "3+",  label: "Years Experience" },
   { value: "500+", label: "Projects Delivered" },
   { value: "50+", label: "Team Members" },
   { value: "98%", label: "Client Satisfaction" },

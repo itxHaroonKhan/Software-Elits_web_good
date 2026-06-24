@@ -20,7 +20,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Software Elites | Premium Software Development Agency, London",
+  title: "Software Elites | Premium Software Development Agency, Richmond VA",
   description:
     "Award-winning software development agency building custom web apps, mobile applications, AI solutions, and cloud infrastructure for ambitious businesses worldwide.",
 };

@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About Us | Software Elites",
+  description: "Learn about Software Elites — our story, our team, and our mission to build exceptional digital products for ambitious businesses worldwide.",
+};
 
 const whyChooseUs = [
   {
@@ -27,7 +33,7 @@ const team = [
   {
     name: "John Smith",
     role: "CEO & Founder",
-    bio: "15+ years shaping digital brands across the USA.",
+    bio: "3+ years shaping digital brands across the USA.",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=400&fit=crop",
   },
   {
@@ -92,7 +98,7 @@ export default function AboutPage() {
               <div className="p-8 rounded-2xl border border-white/[0.07] bg-white/[0.02] w-fit">
                 <span style={{ fontSize: "clamp(3rem, 5vw, 4.5rem)" }}
                   className="font-extrabold tracking-tight text-white leading-none block">
-                  15+
+                  3+
                 </span>
                 <span className="text-zinc-600 text-xs uppercase tracking-wider font-medium mt-1 block">
                   Years Experience
@@ -133,13 +139,13 @@ export default function AboutPage() {
             <div className="flex flex-col gap-5">
               <div className="p-8 rounded-2xl border border-[#7c6af7]/20 bg-[#7c6af7]/[0.04]">
                 <span className="text-[#a89df9] text-xs font-bold uppercase tracking-[0.2em]">
-                  Founded
+                  Founded In USA
                 </span>
                 <p style={{ fontSize: "clamp(3rem, 5vw, 4rem)" }}
                   className="font-extrabold text-white tracking-tight leading-none mt-2 mb-3">
-                  2009
+                  2023
                 </p>
-                <p className="text-zinc-500 text-sm">Founded In USA</p>
+                <p className="text-zinc-500 text-sm">Richmond, Virginia</p>
               </div>
               <p className="text-zinc-600 text-sm italic leading-relaxed pl-4 border-l-2 border-[#7c6af7]/30">
                 &ldquo;We don&apos;t just build websites. We build digital empires for our clients.&rdquo;
@@ -156,7 +162,7 @@ export default function AboutPage() {
             {[
               { value: "500+",  label: "Projects Completed" },
               { value: "120+",  label: "Happy Clients"       },
-              { value: "15+",   label: "Years Experience"    },
+              { value: "3+",    label: "Years Experience"    },
               { value: "50+",   label: "Team Members"        },
             ].map((s, i) => (
               <div key={i} className="bg-[#7c6af7]/0 flex flex-col gap-1 p-6 md:p-8 text-center">
