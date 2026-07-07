@@ -682,6 +682,22 @@ export function generateStaticParams() {
   return Object.keys(projects).map((slug) => ({ slug }));
 }
 
+const allSlugs = Object.keys(projects);
+
+function getAdjacentSlugs(currentSlug: string) {
+  const idx = allSlugs.indexOf(currentSlug);
+  const prev = idx > 0 ? allSlugs[idx - 1] : null;
+  const next = idx < allSlugs.length - 1 ? allSlugs[idx + 1] : null;
+  return { prev, next };
+}
+
+function getRelatedProjects(currentSlug: string, category: string, count: number = 3) {
+  return allSlugs
+    .filter((s) => s !== currentSlug && projects[s].category === category)
+    .slice(0, count)
+    .map((s) => ({ slug: s, ...projects[s] }));
+}
+
 export default async function PortfolioDetailPage({
   params,
 }: {
@@ -691,126 +707,217 @@ export default async function PortfolioDetailPage({
   const p = projects[slug];
   if (!p) notFound();
 
+  const { prev, next } = getAdjacentSlugs(slug);
+  const related = getRelatedProjects(slug, p.category);
+  
+
   return (
-    <main className="bg-black text-white min-h-screen pt-16">
+    <main className="bg-[#050508] text-white min-h-screen">
 
       {/* ── Hero ── */}
-      <section className="relative border-b border-white/[0.06] overflow-hidden">
-        <div className="absolute -top-20 right-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(124,106,247,0.06) 0%, transparent 70%)" }} />
-        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 md:pt-28 pb-16">
+      <section className="relative w-full overflow-hidden bg-[#050508] border-b border-white/[0.04]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-28 md:pt-36 pb-16 md:pb-24">
           <Link href="/portfolio"
-            className="inline-flex items-center gap-2 text-zinc-600 hover:text-white text-sm transition-colors mb-10">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            className="inline-flex items-center gap-2 text-white/30 hover:text-white text-[11px]
+                       font-bold uppercase tracking-[0.25em] transition-all duration-300 group mb-10">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+              className="group-hover:-translate-x-1 transition-transform duration-300">
               <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            All Portfolio
+            Back to Portfolio
           </Link>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-              <span className="text-[#7c6af7] text-xs font-bold uppercase tracking-[0.2em] block mb-4">
-                {p.category} · {p.year}
-              </span>
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.95] text-white mb-4">
-                {p.title}
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="relative">
+              <div className="flex items-center gap-2 mb-5">
+                <span className="w-6 h-px bg-[#7c6af7]" />
+                <span className="text-[#7c6af7] text-[10px] font-bold uppercase tracking-[0.3em]">
+                  {p.category}
+                </span>
+                <span className="text-zinc-700 text-[10px] font-mono">/</span>
+                <span className="text-zinc-600 text-[10px] font-mono">{p.year}</span>
+              </div>
+              <h1 style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+                className="font-black tracking-tight leading-[0.88] text-white max-w-xl">
+                {p.title.split(" ")[0]}
+                <br />
+                <span className="text-transparent"
+                  style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.18)" }}>
+                  {p.title.split(" ").slice(1).join(" ") || p.title.split(" ")[0]}
+                </span>
               </h1>
-              <p className="text-zinc-400 text-lg md:text-xl font-light">{p.client}</p>
+              <p className="text-zinc-400 text-base mt-4 font-light max-w-md">{p.description}</p>
+              <div className="flex items-center gap-5 mt-6">
+                <div className="flex items-center gap-3">
+                  <span className="w-8 h-8 rounded-full bg-[#7c6af7]/10 border border-[#7c6af7]/20 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c6af7" strokeWidth="2">
+                      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  </span>
+                  <span className="text-zinc-400 text-sm">{p.client}</span>
+                </div>
+                <span className="w-px h-5 bg-white/10" />
+                <div className="flex items-center gap-3">
+                  <span className="w-8 h-8 rounded-full bg-[#7c6af7]/10 border border-[#7c6af7]/20 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c6af7" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                    </svg>
+                  </span>
+                  <span className="text-zinc-400 text-sm">{p.duration}</span>
+                </div>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2 shrink-0">
-              {p.tags.map((t) => (
-                <span key={t}
-                  className="text-[10px] uppercase tracking-[0.14em] font-semibold
-                             text-white/40 border border-white/[0.10] px-3 py-1.5 rounded-full">
-                  {t}
-                </span>
-              ))}
+            <div className="relative">
+              <div className="absolute -inset-4 bg-[#7c6af7]/5 rounded-3xl blur-2xl" />
+              <div className="relative rounded-2xl border border-white/[0.08] overflow-hidden bg-[#0a0a12] shadow-xl shadow-[#7c6af7]/5">
+                <div className="aspect-[4/3] relative">
+                  <img src={p.image} alt={p.title}
+                    className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a12]/40 via-transparent to-transparent" />
+                </div>
+                <div className="absolute -top-2 -right-2 w-12 h-12 bg-[#7c6af7] rounded-full flex items-center justify-center shadow-lg shadow-[#7c6af7]/30">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Hero image ── */}
-      <div className="max-w-3xl mx-auto px-6 md:px-12 py-8">
-        <div className="rounded-2xl overflow-hidden border border-white/[0.07] bg-[#0a0a12]">
-          <img src={p.image} alt={p.title}
-            className="w-full h-auto object-contain" style={{ maxHeight: "380px" }} />
-        </div>
-      </div>
-
-      {/* ── Meta bar ── */}
-      <section className="border-b border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-3">
-            {[
-              { label: "Client", value: p.client },
-              { label: "Category", value: p.category },
-              { label: "Duration", value: p.duration },
-            ].map((item, i) => (
-              <div key={item.label}
-                className={`flex flex-col gap-2 py-8 px-6
-                            ${i !== 0 ? "border-l border-white/[0.06]" : ""}
-                            ${i >= 2 ? "hidden md:flex" : ""}`}>
-                <span className="text-zinc-600 text-xs uppercase tracking-wider font-medium">
-                  {item.label}
-                </span>
-                <span className="text-xl md:text-2xl font-bold tracking-tight text-white">
-                  {item.value}
-                </span>
-              </div>
-            ))}
-          </div>
+      {/* ── Tags ── */}
+      <section className="border-b border-white/[0.04] bg-[#07070d]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex flex-wrap gap-2">
+          {p.tags.map((t) => (
+            <span key={t}
+              className="text-[10px] uppercase tracking-[0.14em] font-semibold
+                         text-[#a89df9] bg-[#7c6af7]/8 border border-[#7c6af7]/15
+                         px-3 py-1.5 rounded-full">
+              {t}
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* ── Story ── */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-          <div className="lg:col-span-4">
-            <p className="text-zinc-600 text-xs uppercase tracking-[0.2em] font-bold mb-6">Project Overview</p>
-            <p className="text-zinc-400 text-base leading-relaxed">{p.description}</p>
-            <div className="mt-10">
-              <p className="text-zinc-600 text-xs uppercase tracking-[0.2em] font-bold mb-4">Deliverables</p>
-              <ul className="flex flex-col gap-2">
-                {p.deliverables.map((d) => (
-                  <li key={d} className="flex items-center gap-3 text-zinc-400 text-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#7c6af7] shrink-0" />
-                    {d}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="lg:col-span-8 flex flex-col gap-12">
-            {[
-              { label: "The Brief", text: p.brief },
-              { label: "Our Approach", text: p.approach },
-              { label: "The Result", text: p.result },
-            ].map(({ label, text }) => (
-              <div key={label}>
-                <h2 className="text-xl md:text-2xl font-bold text-white mb-4">{label}</h2>
-                <p className="text-zinc-400 text-base leading-relaxed">{text}</p>
+      {/* ── Content ── */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
+        <div className="max-w-3xl mx-auto space-y-16">
+          {[
+            { label: "The Brief", text: p.brief, num: "01", icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" },
+            { label: "Our Approach", text: p.approach, num: "02", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+            { label: "The Result", text: p.result, num: "03", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+          ].map(({ label, text, num, icon }) => (
+            <div key={label} className="relative pl-14 md:pl-16 group">
+              <div className="absolute left-0 top-0 w-10 h-10 rounded-xl bg-[#7c6af7]/10 border border-[#7c6af7]/20 flex items-center justify-center group-hover:bg-[#7c6af7]/20 transition-colors duration-200">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c6af7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d={icon} />
+                </svg>
               </div>
-            ))}
-          </div>
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-[#7c6af7]/40 text-xs font-mono font-bold">{num}</span>
+                  <span className="text-white text-sm font-bold uppercase tracking-[0.15em]">{label}</span>
+                </div>
+                <p className="text-zinc-400 text-[15px] leading-[1.8] font-light">{text}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ── Gallery ── */}
-      <section className="border-t border-white/[0.06] pb-20 md:pb-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-16">
-          <p className="text-zinc-600 text-xs uppercase tracking-[0.2em] font-bold mb-6">Project Gallery</p>
+      {/* ── Gallery ── */}
+      <section className="border-t border-white/[0.04] py-16 md:py-24 bg-[#07070d]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="flex items-center gap-3 mb-10">
+            <span className="w-5 h-px bg-[#7c6af7]" />
+            <p className="text-[#7c6af7] text-[10px] uppercase tracking-[0.25em] font-bold">Project Gallery</p>
+          </div>
           <PortfolioGallery images={p.images} title={p.title} />
         </div>
       </section>
 
+      {/* ── Related ── */}
+      {related.length > 0 && (
+        <section className="border-t border-white/[0.04] py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="flex items-center gap-3 mb-10">
+              <span className="w-5 h-px bg-[#7c6af7]" />
+              <p className="text-[#7c6af7] text-[10px] uppercase tracking-[0.25em] font-bold">More {p.category}</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04] rounded-2xl overflow-hidden border border-white/[0.04]">
+              {related.map((rp) => (
+                <Link key={rp.slug} href={`/portfolio/${rp.slug}`}
+                  className="group relative bg-[#050508] overflow-hidden transition-all duration-300 hover:bg-[#0c0c14]">
+                  <div className="aspect-[4/3] overflow-hidden relative">
+                    <img src={rp.image} alt={rp.title} loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent" />
+                  </div>
+                  <div className="p-5 border-t border-white/[0.04]">
+                    <span className="text-[#7c6af7] text-[9px] font-bold uppercase tracking-[0.2em] block mb-1">{rp.category}</span>
+                    <h3 className="text-white font-semibold text-sm leading-snug group-hover:text-[#a89df9] transition-colors duration-200">{rp.title}</h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── Nav ── */}
-      <section className="border-t border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 flex justify-between items-center gap-4">
-          <Link href="/portfolio" className="btn btn-outline btn-md">
-            ← All Portfolio
-          </Link>
-          <Link href="/contact" className="btn btn-accent btn-md">
-            Start a Project →
+      <section className="border-t border-white/[0.04] bg-[#07070d]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-2 gap-px bg-white/[0.04]">
+            <Link href={prev ? `/portfolio/${prev}` : "/portfolio"}
+              className={`relative group p-8 md:p-10 ${!prev ? "pointer-events-none opacity-40" : "hover:bg-[#0c0c14]"} transition-all duration-300`}>
+              <span className="text-zinc-600 text-[10px] uppercase tracking-[0.2em] font-bold mb-2 block">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="inline mr-2">
+                  <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Previous
+              </span>
+              <span className="text-white text-sm font-semibold group-hover:text-[#a89df9] transition-colors duration-200 block truncate">
+                {prev ? projects[prev].title : "No previous project"}
+              </span>
+            </Link>
+            <Link href={next ? `/portfolio/${next}` : "/portfolio"}
+              className={`relative group p-8 md:p-10 text-right border-l border-white/[0.04] ${!next ? "pointer-events-none opacity-40" : "hover:bg-[#0c0c14]"} transition-all duration-300`}>
+              <span className="text-zinc-600 text-[10px] uppercase tracking-[0.2em] font-bold mb-2 block">
+                Next
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="inline ml-2">
+                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+              <span className="text-white text-sm font-semibold group-hover:text-[#a89df9] transition-colors duration-200 block truncate">
+                {next ? projects[next].title : "No next project"}
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(124,106,247,0.06) 0%, transparent 60%)" }} />
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28 text-center relative z-10">
+          <span className="text-[#7c6af7] text-[11px] font-bold uppercase tracking-[0.3em] block mb-5">Like what you see?</span>
+          <h2 style={{ fontSize: "clamp(1.6rem, 4vw, 3.2rem)" }}
+            className="font-black tracking-tight leading-tight text-white mb-4">
+            Let&apos;s create something{" "}
+            <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">remarkable.</span>
+          </h2>
+          <p className="text-zinc-500 text-sm max-w-md mx-auto font-light mb-8">Have a project in mind? We&apos;d love to hear about it.</p>
+          <Link href="/contact"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#7c6af7] text-white
+                       font-bold text-sm uppercase tracking-[0.1em] hover:bg-[#6a59e0]
+                       transition-all duration-200 shadow-[0_0_40px_rgba(124,106,247,0.25)]">
+            Start Your Project
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </Link>
         </div>
       </section>

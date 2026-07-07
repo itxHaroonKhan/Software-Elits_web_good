@@ -18,10 +18,12 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-end">
             <div className="flex flex-col gap-6">
               <span className="section-label">Get In Touch</span>
-              <h1 style={{ fontSize: "clamp(2.8rem, 7vw, 6rem)" }}
-                className="font-extrabold tracking-tight leading-[0.92] text-white">
-                CONTACT{" "}
-                <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
+              <h1 style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+                className="font-black tracking-tight leading-[0.88] text-white">
+                CONTACT
+                <br />
+                <span className="text-transparent"
+                  style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.18)" }}>
                   US
                 </span>
               </h1>

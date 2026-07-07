@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const categories = ["All Projects", "Web Design", "Mobile Apps", "Branding", "Video & Animation"];
+const categories = ["All", "Web Design", "Mobile Apps", "Branding", "Video & Animation"];
 
 const projects = [
   // Web Design (14)
@@ -66,118 +66,194 @@ const projects = [
   { id: 57, slug: "corporate-interview-series",  title: "Corporate Interview Series",    category: "Video & Animation", image: "/portfolio/portfolio_web57.webp", year: "2024" },
 ];
 
-const counts: Record<string, number> = categories.reduce((acc, cat) => {
-  if (cat !== "All Projects") {
-    acc[cat] = projects.filter(p => p.category === cat).length;
-  }
-  return acc;
-}, {} as Record<string, number>);
-
 export default function PortfolioPage() {
-  const [active, setActive] = useState("All Projects");
+  const [active, setActive] = useState("All");
 
-  const filtered = active === "All Projects"
+  const filtered = active === "All"
     ? projects
     : projects.filter(p => p.category === active);
 
   return (
-    <main className="bg-[#05050a] text-white min-h-screen overflow-x-hidden">
+    <main className="bg-[#050508] text-white min-h-screen overflow-x-hidden">
 
       {/* ── Hero ── */}
-      <section className="relative w-full overflow-hidden border-b border-white/[0.06]">
-        <div className="absolute -top-40 left-1/3 w-[700px] h-[700px] pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(124,106,247,0.07) 0%, transparent 65%)" }} />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 md:pt-44 pb-14 relative z-10">
-          <span className="section-label mb-6">Portfolio</span>
-          <h1 style={{ fontSize: "clamp(2.2rem, 6vw, 5.5rem)" }}
-            className="font-extrabold tracking-tight leading-[0.92] text-white mb-6 max-w-4xl">
-            Our creative{" "}
-            <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
-              showcase.
-            </span>
-          </h1>
-          <p className="text-zinc-500 text-base md:text-xl max-w-xl leading-relaxed font-light pb-4">
-            Browse our work across web design, mobile apps, branding, and video production.
-          </p>
+      <section className="relative w-full pt-32 md:pt-44 pb-20 md:pb-28 border-b border-white/[0.05] overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] opacity-30"
+            style={{ background: "radial-gradient(circle at 70% 20%, rgba(124,106,247,0.15) 0%, transparent 60%)" }} />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] opacity-20"
+            style={{ background: "radial-gradient(circle, rgba(90,120,240,0.12) 0%, transparent 70%)" }} />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-8 h-px bg-[#7c6af7]" />
+                <span className="text-[#7c6af7] text-[11px] font-bold uppercase tracking-[0.3em]">
+                  Our Work
+                </span>
+              </div>
+              <h1 style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+                className="font-black tracking-tight leading-[0.88] text-white">
+                OUR
+                <br />
+                <span className="text-transparent"
+                  style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.2)" }}>
+                  PROJECTS
+                </span>
+              </h1>
+            </div>
+            <div className="max-w-xs">
+              <p className="text-zinc-500 text-base leading-relaxed font-light">
+                {projects.length}+ projects delivered across web, mobile, brand, and motion.
+              </p>
+              <div className="mt-6 flex items-center gap-4">
+                <div className="flex flex-col">
+                  <span className="text-white font-extrabold text-2xl">54</span>
+                  <span className="text-zinc-600 text-[10px] uppercase tracking-wider">Projects</span>
+                </div>
+                <div className="w-px h-8 bg-white/10" />
+                <div className="flex flex-col">
+                  <span className="text-white font-extrabold text-2xl">4</span>
+                  <span className="text-zinc-600 text-[10px] uppercase tracking-wider">Categories</span>
+                </div>
+                <div className="w-px h-8 bg-white/10" />
+                <div className="flex flex-col">
+                  <span className="text-white font-extrabold text-2xl">98%</span>
+                  <span className="text-zinc-600 text-[10px] uppercase tracking-wider">Satisfaction</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── Filter Tabs ── */}
-      <div className="sticky top-16 z-30 bg-[#05050a]/95 backdrop-blur-xl border-b border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-          <div className="flex items-center gap-2 overflow-x-auto py-4" style={{ scrollbarWidth: "none" }}>
-            {categories.map(cat => (
-              <button key={cat} onClick={() => setActive(cat)}
-                className={`flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold uppercase
-                            tracking-[0.12em] border whitespace-nowrap shrink-0 transition-all duration-200
-                            ${active === cat
-                              ? "bg-[#7c6af7] border-[#7c6af7] text-white shadow-[0_0_20px_rgba(124,106,247,0.4)]"
-                              : "bg-transparent border-white/[0.10] text-zinc-500 hover:border-white/25 hover:text-white"
-                            }`}>
-                {cat}
-                {cat !== "All Projects" && (
-                  <span className={`text-[10px] ${active === cat ? "text-white/70" : "text-zinc-700"}`}>
-                    {counts[cat]}
+      {/* ── Filter Bar ── */}
+      <div className="sticky top-16 z-30 bg-[#050508]/90 backdrop-blur-2xl border-b border-white/[0.05]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="flex items-center gap-1 overflow-x-auto py-4" style={{ scrollbarWidth: "none" }}>
+            {categories.map(cat => {
+              const count = cat === "All" ? projects.length : projects.filter(p => p.category === cat).length;
+              return (
+                <button key={cat} onClick={() => setActive(cat)}
+                  className={`relative flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold uppercase
+                              tracking-[0.1em] whitespace-nowrap shrink-0 transition-all duration-200
+                              ${active === cat
+                                ? "text-white"
+                                : "text-zinc-600 hover:text-zinc-300"
+                              }`}>
+                  {active === cat && (
+                    <span className="absolute inset-0 rounded-lg bg-white/[0.07] border border-white/[0.10]" />
+                  )}
+                  <span className="relative">{cat}</span>
+                  <span className={`relative text-[10px] font-mono
+                    ${active === cat ? "text-[#7c6af7]" : "text-zinc-700"}`}>
+                    {count}
                   </span>
-                )}
-              </button>
-            ))}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
 
       {/* ── Grid ── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 md:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map(p => (
+      <section className="max-w-7xl mx-auto px-6 md:px-12 py-14 md:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04] rounded-2xl overflow-hidden border border-white/[0.05]">
+          {filtered.map((p, idx) => (
             <Link key={p.id} href={`/portfolio/${p.slug}`}
-              className="group relative rounded-2xl overflow-hidden border border-white/[0.07]
-                         hover:border-[#7c6af7]/35 transition-all duration-400 cursor-pointer">
-              <div className="aspect-[4/3] overflow-hidden">
+              className="group relative bg-[#050508] overflow-hidden transition-all duration-300 hover:bg-[#0c0c14]">
+
+              {/* Image */}
+              <div className="aspect-[4/3] overflow-hidden relative">
                 <img src={p.image} alt={p.title} loading="lazy"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0
-                             scale-[1.05] group-hover:scale-100 transition-all duration-700 ease-out" />
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out
+                             group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/30 to-transparent" />
+
+                {/* Index number */}
+                <div className="absolute top-4 left-4 w-8 h-8 rounded-lg bg-black/70 backdrop-blur-sm
+                                border border-white/10 flex items-center justify-center">
+                  <span className="text-zinc-500 text-[10px] font-mono font-bold">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                </div>
+
+                {/* Arrow on hover */}
+                <div className="absolute top-4 right-4 w-8 h-8 rounded-lg bg-[#7c6af7]/0 border border-white/0
+                                flex items-center justify-center transition-all duration-300
+                                group-hover:bg-[#7c6af7]/20 group-hover:border-[#7c6af7]/40">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                    className="text-transparent group-hover:text-[#a89df9] transition-colors duration-300 -rotate-45">
+                    <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
               </div>
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0
-                              opacity-0 group-hover:opacity-100 transition-all duration-400">
-                <span className="text-[#a89df9] text-[10px] font-bold uppercase tracking-[0.18em] block mb-1">
-                  {p.category}
-                </span>
-                <h3 className="text-white font-semibold text-base leading-tight">{p.title}</h3>
-                <p className="text-zinc-500 text-xs mt-1">{p.year}</p>
-              </div>
-              {/* Category badge (always visible) */}
-              <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-sm
-                                 text-zinc-400 text-[10px] font-bold uppercase tracking-[0.12em]">
-                  {p.category}
-                </span>
+
+              {/* Card info */}
+              <div className="p-5 border-t border-white/[0.05]">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <span className="text-[#7c6af7] text-[9px] font-bold uppercase tracking-[0.2em] block mb-1.5">
+                      {p.category}
+                    </span>
+                    <h3 className="text-white font-semibold text-sm leading-snug group-hover:text-[#a89df9]
+                                   transition-colors duration-200">
+                      {p.title}
+                    </h3>
+                  </div>
+                  <span className="text-zinc-700 text-[10px] font-mono shrink-0 mt-0.5">{p.year}</span>
+                </div>
               </div>
             </Link>
           ))}
         </div>
+
+        {/* Result count */}
+        <p className="text-zinc-700 text-xs font-mono text-center mt-8 tracking-wider">
+          — {filtered.length} projects —
+        </p>
       </section>
 
       {/* ── CTA ── */}
-      <section className="border-t border-white/[0.06] bg-[#07070e]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-24 md:py-32 text-center flex flex-col items-center gap-6">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
-            Like what you see?
+      <section className="border-t border-white/[0.05] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(124,106,247,0.08) 0%, transparent 60%)" }} />
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-28 md:py-36 text-center relative z-10">
+          <span className="text-[#7c6af7] text-[11px] font-bold uppercase tracking-[0.3em] block mb-6">
+            Ready to collaborate?
+          </span>
+          <h2 style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
+            className="font-black tracking-tight leading-tight text-white mb-6">
+            Let&apos;s build your{" "}
+            <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
+              next big thing.
+            </span>
           </h2>
-          <p className="text-zinc-500 text-base md:text-lg max-w-md font-light">
-            Let&apos;s build something amazing together.
+          <p className="text-zinc-500 text-base max-w-sm mx-auto font-light mb-10">
+            From concept to launch — we turn bold ideas into results-driven digital products.
           </p>
-          <Link href="/contact" className="btn btn-accent btn-lg">
-            Start a Project
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link href="/contact"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#7c6af7] text-white
+                         font-bold text-sm uppercase tracking-[0.1em] hover:bg-[#6a59e0]
+                         transition-colors duration-200 shadow-[0_0_40px_rgba(124,106,247,0.3)]">
+              Start a Project
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+            <Link href="/packages"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/[0.10]
+                         text-zinc-400 font-bold text-sm uppercase tracking-[0.1em]
+                         hover:border-white/25 hover:text-white transition-all duration-200">
+              View Packages
+            </Link>
+          </div>
         </div>
       </section>
+
     </main>
   );
 }

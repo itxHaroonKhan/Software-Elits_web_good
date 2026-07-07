@@ -110,10 +110,12 @@ export default function ServicesPage() {
           style={{ background: "radial-gradient(circle, rgba(124,106,247,0.07) 0%, transparent 65%)" }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 md:pt-44 pb-14 relative z-10">
           <span className="section-label mb-6">What We Do</span>
-          <h1 className="font-extrabold tracking-tight leading-[0.92] text-white mt-4 mb-5"
-            style={{ fontSize: "clamp(2.2rem, 6vw, 5.5rem)" }}>
-            Our{" "}
-            <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
+          <h1 className="font-black tracking-tight leading-[0.88] text-white mt-4 mb-5"
+            style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}>
+            Our
+            <br />
+            <span className="text-transparent"
+              style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.18)" }}>
               SERVICES
             </span>
           </h1>

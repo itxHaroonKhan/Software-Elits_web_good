@@ -82,11 +82,13 @@ export default function TechnologiesPage() {
           style={{ background: "radial-gradient(circle, rgba(90,120,240,0.07) 0%, transparent 65%)" }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 md:pt-44 pb-20 relative z-10">
           <span className="section-label mb-6">Technologies</span>
-          <h1 style={{ fontSize: "clamp(2.2rem, 6vw, 5.5rem)" }}
-            className="font-extrabold tracking-tight leading-[0.92] text-white mb-6 max-w-4xl">
-            Tools we{" "}
-            <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
-              master.
+          <h1 style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+            className="font-black tracking-tight leading-[0.88] text-white mb-6 max-w-4xl">
+            Tools we
+            <br />
+            <span className="text-transparent"
+              style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.18)" }}>
+              MASTER.
             </span>
           </h1>
           <p className="text-zinc-500 text-base md:text-xl max-w-xl leading-relaxed font-light">

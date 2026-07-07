@@ -142,6 +142,19 @@ export default function ContactForm() {
                 </div>
               </div>
 
+              {/* Office Map */}
+              <div className="rounded-xl overflow-hidden border border-white/[0.07]">
+                <iframe
+                  src="https://maps.google.com/maps?q=5142+Glenbeigh+Rd+Richmond+VA+23234&output=embed"
+                  width="100%"
+                  height="200"
+                  style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+
               {/* Social links */}
               <div className="flex flex-col gap-3 pt-6 border-t border-white/[0.06]">
                 <span className="text-zinc-600 text-[10px] uppercase tracking-[0.22em] font-semibold">

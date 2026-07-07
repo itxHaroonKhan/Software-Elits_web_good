@@ -6,111 +6,133 @@ import Link from "next/link";
 const projects = [
   {
     number: "01",
+    title: "Whiteboard Animation",
+    category: "Video & Animation",
+    desc: "A series of 5 whiteboard-style animated explainer videos for an online education platform's core curriculum modules.",
+    image: "/portfolio/portfolio_web56.webp",
+    tags: ["Animation", "Education", "Video"],
+    year: "2023",
+    slug: "whiteboard-animation",
+  },
+  {
+    number: "02",
     title: "E-Commerce Platform",
     category: "Web Development",
     desc: "A fully custom e-commerce solution with real-time inventory, multi-currency support, and AI-powered recommendations.",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&h=500&fit=crop",
     tags: ["Web Development", "E-Commerce", "AI"],
     year: "2024",
+    slug: "luxestore-ecommerce",
   },
   {
-    number: "02",
+    number: "03",
     title: "FinTech Dashboard",
     category: "Mobile App",
     desc: "An intuitive financial analytics dashboard serving 50K+ active users with real-time data visualization.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&h=500&fit=crop",
     tags: ["Mobile App", "FinTech", "React Native"],
     year: "2024",
+    slug: "fintech-dashboard",
   },
   {
-    number: "03",
+    number: "04",
     title: "Luxury Brand Identity",
     category: "Branding",
     desc: "Complete brand overhaul for a premium lifestyle brand including logo, packaging, and digital presence.",
     image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=800&h=500&fit=crop",
     tags: ["Branding", "Logo Design", "Packaging"],
     year: "2024",
+    slug: "luxury-brand",
   },
   {
-    number: "04",
+    number: "05",
     title: "Healthcare App",
     category: "Mobile App",
     desc: "Patient-centric healthcare platform connecting doctors and patients with seamless appointment management.",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&h=500&fit=crop",
     tags: ["Mobile App", "Healthcare", "HIPAA"],
     year: "2024",
+    slug: "healthcare-mobile",
   },
   {
-    number: "05",
+    number: "06",
     title: "SaaS Landing Page",
     category: "Web Design",
     desc: "High-converting landing page for a B2B SaaS startup that increased conversions by 240%.",
     image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&h=500&fit=crop",
     tags: ["Web Design", "SaaS", "Conversion"],
     year: "2024",
+    slug: "saas-landing",
   },
   {
-    number: "06",
+    number: "07",
     title: "Product Animation Reel",
     category: "Video & Animation",
     desc: "A compelling 90-second explainer video that simplified complex product features into engaging visuals.",
     image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&h=500&fit=crop",
     tags: ["Video", "Animation", "Motion"],
     year: "2023",
+    slug: "product-animation",
   },
   {
-    number: "07",
+    number: "08",
     title: "Real Estate Portal",
     category: "Web Development",
     desc: "Feature-rich real estate platform with virtual tours, AI property matching, and integrated mortgage tools.",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&h=500&fit=crop",
     tags: ["Web Development", "Real Estate", "Maps API"],
     year: "2023",
+    slug: "real-estate-portal",
   },
   {
-    number: "08",
+    number: "09",
     title: "Fitness Brand Rebrand",
     category: "Branding",
     desc: "Complete brand transformation for a fitness chain across 45 locations nationwide.",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&h=500&fit=crop",
     tags: ["Branding", "Identity", "Print"],
     year: "2023",
+    slug: "fitness-tracker",
   },
   {
-    number: "09",
+    number: "10",
     title: "Social Media Campaign",
     category: "Video & Animation",
     desc: "Viral social media campaign that generated 2M+ impressions in the first week of launch.",
     image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&h=500&fit=crop",
     tags: ["Video", "Social Media", "Viral"],
     year: "2023",
+    slug: "social-media-campaign",
   },
   {
-    number: "10",
+    number: "11",
     title: "Education Platform",
     category: "Web Development",
     desc: "Scalable LMS platform serving 100K+ students with live classes, assessments, and progress tracking.",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&h=500&fit=crop",
     tags: ["Web Development", "EdTech", "LMS"],
     year: "2023",
+    slug: "education-platform",
   },
   {
-    number: "11",
+    number: "12",
     title: "Restaurant Mobile App",
     category: "Mobile App",
     desc: "A seamless ordering and loyalty app for a restaurant chain with 200+ locations.",
     image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&h=500&fit=crop",
     tags: ["Mobile App", "Restaurant", "Loyalty"],
     year: "2022",
+    slug: "restaurant-ordering",
   },
   {
-    number: "12",
+    number: "13",
     title: "Corporate Website",
     category: "Web Design",
     desc: "Enterprise-level corporate website with CMS integration and multi-language support.",
     image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&h=500&fit=crop",
     tags: ["Web Design", "CMS", "Corporate"],
     year: "2022",
+    slug: "corporate-agency",
   },
 ];
 
@@ -126,10 +148,12 @@ export default function ProjectsPage() {
           style={{ background: "radial-gradient(circle, rgba(90,120,240,0.07) 0%, transparent 65%)" }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 md:pt-44 pb-16 relative z-10">
           <span className="section-label mb-6">Case Studies</span>
-          <h1 style={{ fontSize: "clamp(2.2rem, 6vw, 5.5rem)" }}
-            className="font-extrabold tracking-tight leading-[0.92] text-white mb-6 max-w-4xl">
-            OUR{" "}
-            <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
+          <h1 style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+            className="font-black tracking-tight leading-[0.88] text-white mb-6 max-w-4xl">
+            OUR
+            <br />
+            <span className="text-transparent"
+              style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.18)" }}>
               PROJECTS
             </span>
           </h1>

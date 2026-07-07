@@ -7,6 +7,7 @@ import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
 import Insights from "@/components/Insights";
 import ImageTrailEffect from "@/components/ImageTrail";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
       <Testimonials />
       <hr className="border-t border-zinc-800/80 w-full my-0" />
       <Insights />
+      <ContactForm />
     </main>
   );
 }

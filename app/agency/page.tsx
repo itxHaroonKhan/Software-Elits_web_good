@@ -65,10 +65,12 @@ export default function AgencyPage() {
           style={{ background: "radial-gradient(ellipse, rgba(124,106,247,0.07) 0%, transparent 60%)" }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 pt-28 sm:pt-32 md:pt-44 pb-20 relative z-10">
           <span className="section-label mb-6">Our Agency</span>
-          <h1 style={{ fontSize: "clamp(2.2rem, 6vw, 5.5rem)" }}
-            className="font-extrabold tracking-tight leading-[0.92] text-white mb-6 max-w-4xl">
-            OUR{" "}
-            <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
+          <h1 style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+            className="font-black tracking-tight leading-[0.88] text-white mb-6 max-w-4xl">
+            OUR
+            <br />
+            <span className="text-transparent"
+              style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.18)" }}>
               AGENCY
             </span>
           </h1>

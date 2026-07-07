@@ -77,16 +77,18 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-end">
             <div className="flex flex-col gap-6">
               <span className="section-label">Who We Are</span>
-              <h1 style={{ fontSize: "clamp(2.2rem, 6vw, 5.5rem)" }}
-                className="font-extrabold tracking-tight leading-[0.92] text-white">
-                ABOUT{" "}
-                <span className="bg-gradient-to-r from-[#7c6af7] to-[#5a78f0] bg-clip-text text-transparent">
+              <h1 style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+                className="font-black tracking-tight leading-[0.88] text-white">
+                ABOUT
+                <br />
+                <span className="text-transparent"
+                  style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.18)" }}>
                   US
                 </span>
               </h1>
               <p className="text-zinc-500 text-base md:text-xl max-w-xl leading-relaxed font-light">
                 A US-based creative software house delivering web design, development
-                &amp; digital solutions for over 15 years — blending bold creativity
+                &amp; digital solutions for over 3 years — blending bold creativity
                 with cutting-edge technology.
               </p>
               <div className="flex flex-wrap gap-3 pt-2">
@@ -124,7 +126,7 @@ export default function AboutPage() {
               </h2>
               <p className="text-zinc-500 text-sm md:text-base leading-relaxed font-light">
                 SOFTWARE ELITES is a full-service digital creative agency founded with a singular
-                mission: to help businesses succeed online. With over 15 years of experience and a
+                mission: to help businesses succeed online. With over 3 years of experience and a
                 passionate team, we have helped hundreds of businesses across the USA transform their
                 digital presence.
               </p>
@@ -280,7 +282,7 @@ export default function AboutPage() {
                                  text-[#a89df9] text-xs font-bold tracking-wider">
                   {c.abbr}
                 </span>
-                <span className="text-zinc-600 text-[10px] font-semibold uppercase tracking-wider text-center leading-tight">
+                <span className="text-white text-[10px] font-semibold uppercase tracking-wider text-center leading-tight">
                   {c.name}
                 </span>
               </div>
