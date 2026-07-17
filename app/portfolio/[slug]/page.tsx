@@ -727,9 +727,9 @@ export default async function PortfolioDetailPage({
             Back to Portfolio
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
             <div className="relative">
-              <div className="flex items-center gap-2 mb-5">
+              <div className="flex items-center gap-2 mb-4 md:mb-5">
                 <span className="w-6 h-px bg-[#7c6af7]" />
                 <span className="text-[#7c6af7] text-[10px] font-bold uppercase tracking-[0.3em]">
                   {p.category}
@@ -737,17 +737,17 @@ export default async function PortfolioDetailPage({
                 <span className="text-zinc-700 text-[10px] font-mono">/</span>
                 <span className="text-zinc-600 text-[10px] font-mono">{p.year}</span>
               </div>
-              <h1 style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
+              <h1 style={{ fontSize: "clamp(1.8rem, 5vw, 4rem)" }}
                 className="font-black tracking-tight leading-[1.05] text-white max-w-xl">
                 {p.title.split(" ")[0]}
-                <br />
+                <br className="hidden sm:block" />
                 <span className="text-transparent"
                   style={{ WebkitTextStroke: "1.5px rgba(255,255,255,0.18)" }}>
                   {p.title.split(" ").slice(1).join(" ") || p.title.split(" ")[0]}
                 </span>
               </h1>
-              <p className="text-zinc-400 text-base mt-4 font-light max-w-md">{p.description}</p>
-              <div className="flex items-center gap-5 mt-6">
+              <p className="text-zinc-400 text-sm md:text-base mt-3 md:mt-4 font-light max-w-md">{p.description}</p>
+              <div className="flex flex-wrap items-center gap-3 md:gap-5 mt-4 md:mt-6">
                 <div className="flex items-center gap-3">
                   <span className="w-8 h-8 rounded-full bg-[#7c6af7]/10 border border-[#7c6af7]/20 flex items-center justify-center">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c6af7" strokeWidth="2">
@@ -769,7 +769,7 @@ export default async function PortfolioDetailPage({
             </div>
             <div className="relative">
               <div className="absolute -inset-4 bg-[#7c6af7]/5 rounded-3xl blur-2xl" />
-              <div className="relative rounded-2xl border border-white/[0.08] overflow-hidden bg-[#0a0a12] shadow-xl shadow-[#7c6af7]/5">
+              <div className="relative rounded-xl md:rounded-2xl border border-white/[0.08] overflow-hidden bg-[#0a0a12] shadow-xl shadow-[#7c6af7]/5">
                 <div className="aspect-[4/3] relative">
                   <img src={p.image} alt={p.title}
                     className="w-full h-full object-cover" />
@@ -840,13 +840,13 @@ export default async function PortfolioDetailPage({
 
       {/* ── Related ── */}
       {related.length > 0 && (
-        <section className="border-t border-white/[0.04] py-16 md:py-24">
-          <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <div className="flex items-center gap-3 mb-10">
+        <section className="border-t border-white/[0.04] py-12 md:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+            <div className="flex items-center gap-3 mb-8 md:mb-10">
               <span className="w-5 h-px bg-[#7c6af7]" />
               <p className="text-[#7c6af7] text-[10px] uppercase tracking-[0.25em] font-bold">More {p.category}</p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04] rounded-2xl overflow-hidden border border-white/[0.04]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-px bg-white/[0.04] rounded-xl sm:rounded-2xl overflow-hidden border border-white/[0.04]">
               {related.map((rp) => (
                 <Link key={rp.slug} href={`/portfolio/${rp.slug}`}
                   className="group relative bg-[#050508] overflow-hidden transition-all duration-300 hover:bg-[#0c0c14]">
@@ -855,7 +855,7 @@ export default async function PortfolioDetailPage({
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent" />
                   </div>
-                  <div className="p-5 border-t border-white/[0.04]">
+                  <div className="p-4 md:p-5 border-t border-white/[0.04]">
                     <span className="text-[#7c6af7] text-[9px] font-bold uppercase tracking-[0.2em] block mb-1">{rp.category}</span>
                     <h3 className="text-white font-semibold text-sm leading-snug group-hover:text-[#a89df9] transition-colors duration-200">{rp.title}</h3>
                   </div>
@@ -868,29 +868,29 @@ export default async function PortfolioDetailPage({
 
       {/* ── Nav ── */}
       <section className="border-t border-white/[0.04] bg-[#07070d]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
           <div className="grid grid-cols-2 gap-px bg-white/[0.04]">
             <Link href={prev ? `/portfolio/${prev}` : "/portfolio"}
-              className={`relative group p-8 md:p-10 ${!prev ? "pointer-events-none opacity-40" : "hover:bg-[#0c0c14]"} transition-all duration-300`}>
+              className={`relative group p-5 md:p-10 ${!prev ? "pointer-events-none opacity-40" : "hover:bg-[#0c0c14]"} transition-all duration-300`}>
               <span className="text-zinc-600 text-[10px] uppercase tracking-[0.2em] font-bold mb-2 block">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="inline mr-2">
                   <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 Previous
               </span>
-              <span className="text-white text-sm font-semibold group-hover:text-[#a89df9] transition-colors duration-200 block truncate">
+              <span className="text-white text-xs md:text-sm font-semibold group-hover:text-[#a89df9] transition-colors duration-200 block truncate">
                 {prev ? projects[prev].title : "No previous project"}
               </span>
             </Link>
             <Link href={next ? `/portfolio/${next}` : "/portfolio"}
-              className={`relative group p-8 md:p-10 text-right border-l border-white/[0.04] ${!next ? "pointer-events-none opacity-40" : "hover:bg-[#0c0c14]"} transition-all duration-300`}>
+              className={`relative group p-5 md:p-10 text-right border-l border-white/[0.04] ${!next ? "pointer-events-none opacity-40" : "hover:bg-[#0c0c14]"} transition-all duration-300`}>
               <span className="text-zinc-600 text-[10px] uppercase tracking-[0.2em] font-bold mb-2 block">
                 Next
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="inline ml-2">
                   <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </span>
-              <span className="text-white text-sm font-semibold group-hover:text-[#a89df9] transition-colors duration-200 block truncate">
+              <span className="text-white text-xs md:text-sm font-semibold group-hover:text-[#a89df9] transition-colors duration-200 block truncate">
                 {next ? projects[next].title : "No next project"}
               </span>
             </Link>

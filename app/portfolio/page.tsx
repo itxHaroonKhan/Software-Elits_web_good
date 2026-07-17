@@ -77,7 +77,7 @@ export default function PortfolioPage() {
     <main className="bg-[#050508] text-white min-h-screen overflow-x-hidden">
 
       {/* ── Hero ── */}
-      <section className="relative w-full pt-32 md:pt-44 pb-20 md:pb-28 border-b border-white/[0.05] overflow-hidden">
+      <section className="relative w-full pt-28 sm:pt-32 md:pt-44 pb-14 md:pb-28 border-b border-white/[0.05] overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] opacity-30"
             style={{ background: "radial-gradient(circle at 70% 20%, rgba(124,106,247,0.15) 0%, transparent 60%)" }} />
@@ -105,22 +105,22 @@ export default function PortfolioPage() {
               </h1>
             </div>
             <div className="max-w-xs">
-              <p className="text-zinc-500 text-base leading-relaxed font-light">
+              <p className="text-zinc-500 text-sm md:text-base leading-relaxed font-light">
                 {projects.length}+ projects delivered across web, mobile, brand, and motion.
               </p>
-              <div className="mt-6 flex items-center gap-4">
+              <div className="mt-4 md:mt-6 flex items-center gap-3 md:gap-4">
                 <div className="flex flex-col">
-                  <span className="text-white font-extrabold text-2xl">54</span>
+                  <span className="text-white font-extrabold text-xl md:text-2xl">54</span>
                   <span className="text-zinc-600 text-[10px] uppercase tracking-wider">Projects</span>
                 </div>
-                <div className="w-px h-8 bg-white/10" />
+                <div className="w-px h-6 md:h-8 bg-white/10" />
                 <div className="flex flex-col">
-                  <span className="text-white font-extrabold text-2xl">4</span>
+                  <span className="text-white font-extrabold text-xl md:text-2xl">4</span>
                   <span className="text-zinc-600 text-[10px] uppercase tracking-wider">Categories</span>
                 </div>
-                <div className="w-px h-8 bg-white/10" />
+                <div className="w-px h-6 md:h-8 bg-white/10" />
                 <div className="flex flex-col">
-                  <span className="text-white font-extrabold text-2xl">98%</span>
+                  <span className="text-white font-extrabold text-xl md:text-2xl">98%</span>
                   <span className="text-zinc-600 text-[10px] uppercase tracking-wider">Satisfaction</span>
                 </div>
               </div>
@@ -130,8 +130,8 @@ export default function PortfolioPage() {
       </section>
 
       {/* ── Filter Bar ── */}
-      <div className="sticky top-16 z-30 bg-[#050508]/90 backdrop-blur-2xl border-b border-white/[0.05]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="sticky top-20 md:top-16 z-30 bg-[#050508]/90 backdrop-blur-2xl border-b border-white/[0.05]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
           <div className="flex items-center gap-1 overflow-x-auto py-4" style={{ scrollbarWidth: "none" }}>
             {categories.map(cat => {
               const count = cat === "All" ? projects.length : projects.filter(p => p.category === cat).length;
@@ -159,8 +159,8 @@ export default function PortfolioPage() {
       </div>
 
       {/* ── Grid ── */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 py-14 md:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.04] rounded-2xl overflow-hidden border border-white/[0.05]">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-10 md:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-px bg-white/[0.04] rounded-xl sm:rounded-2xl overflow-hidden border border-white/[0.05]">
           {filtered.map((p, idx) => (
             <Link key={p.id} href={`/portfolio/${p.slug}`}
               className="group relative bg-[#050508] overflow-hidden transition-all duration-300 hover:bg-[#0c0c14]">
@@ -173,7 +173,7 @@ export default function PortfolioPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/30 to-transparent" />
 
                 {/* Index number */}
-                <div className="absolute top-4 left-4 w-8 h-8 rounded-lg bg-black/70 backdrop-blur-sm
+                <div className="absolute top-3 left-3 w-7 h-7 md:top-4 md:left-4 md:w-8 md:h-8 rounded-lg bg-black/70 backdrop-blur-sm
                                 border border-white/10 flex items-center justify-center">
                   <span className="text-zinc-500 text-[10px] font-mono font-bold">
                     {String(idx + 1).padStart(2, "0")}
@@ -181,7 +181,7 @@ export default function PortfolioPage() {
                 </div>
 
                 {/* Arrow on hover */}
-                <div className="absolute top-4 right-4 w-8 h-8 rounded-lg bg-[#7c6af7]/0 border border-white/0
+                <div className="absolute top-3 right-3 w-7 h-7 md:top-4 md:right-4 md:w-8 md:h-8 rounded-lg bg-[#7c6af7]/0 border border-white/0
                                 flex items-center justify-center transition-all duration-300
                                 group-hover:bg-[#7c6af7]/20 group-hover:border-[#7c6af7]/40">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
@@ -192,7 +192,7 @@ export default function PortfolioPage() {
               </div>
 
               {/* Card info */}
-              <div className="p-5 border-t border-white/[0.05]">
+              <div className="p-4 sm:p-5 border-t border-white/[0.05]">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <span className="text-[#7c6af7] text-[9px] font-bold uppercase tracking-[0.2em] block mb-1.5">
@@ -220,7 +220,7 @@ export default function PortfolioPage() {
       <section className="border-t border-white/[0.05] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(124,106,247,0.08) 0%, transparent 60%)" }} />
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-28 md:py-36 text-center relative z-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-36 text-center relative z-10">
           <span className="text-[#7c6af7] text-[11px] font-bold uppercase tracking-[0.3em] block mb-6">
             Ready to collaborate?
           </span>

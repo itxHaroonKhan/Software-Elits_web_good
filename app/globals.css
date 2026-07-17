@@ -52,6 +52,7 @@ html {
   color-scheme: dark;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
 body {
@@ -63,6 +64,16 @@ body {
   min-height:             100vh;
   line-height:            1.6;
   width:                  100%;
+  overflow-x:             hidden;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -256,6 +267,23 @@ a { color: inherit; text-decoration: none; }
   to   { transform: rotate(360deg); }
 }
 
+@media screen and (max-width: 640px) {
+  .floating-cta {
+    width:  64px;
+    height: 64px;
+    bottom: 1rem;
+    left:   1rem;
+  }
+  .floating-cta__text svg text {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+  .floating-cta__arrow svg {
+    width:  16px;
+    height: 16px;
+  }
+}
+
 /* ══════════════════════════════════════════════════════
    Infinite Marquee  (ClientLogos.tsx)
    ══════════════════════════════════════════════════════ */
@@ -371,7 +399,8 @@ a { color: inherit; text-decoration: none; }
 
   .hero-gallery__inner {
     min-height:      100vh;
-    width:           100vw;
+    width:           100%;
+    max-width:       100vw;
     display:         flex;
     place-items:     center;
     align-content:   center;
@@ -410,7 +439,7 @@ a { color: inherit; text-decoration: none; }
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows:    repeat(3, auto);
     gap:                   var(--gap);
-    width:                 1600px;
+    width:                 min(1600px, calc(100% - (2 * var(--gutter))));
     max-width:             calc(100% - (2 * var(--gutter)));
     margin:                0 auto;
     align-content:         center;
@@ -420,11 +449,21 @@ a { color: inherit; text-decoration: none; }
     translate:             -50% -50%;
   }
   @media (min-width: 1024px) { .hero-gallery__grid { padding-top: 30px; } }
-  @media (max-width: 600px) {
-    .hero-gallery { --gutter: 1rem; }
-    .hero-gallery__grid { grid-template-columns: repeat(3, 1fr); --offset: -1; }
-    .hero-gallery__grid > div:nth-of-type(1) { display: none; }
-  }
+@media screen and (max-width: 640px) {
+  .hero-gallery { --gutter: 1rem; }
+  .hero-gallery__grid { grid-template-columns: 1fr; --offset: -1; }
+  .hero-gallery__grid > div:nth-of-type(1),
+  .hero-gallery__grid > div:nth-of-type(2),
+  .hero-gallery__grid > div:nth-of-type(3) { display: none; }
+  .hero-gallery__grid .hero-gallery__main-image { grid-area: 1 / 1 !important; }
+  .hero-gallery__main-image { aspect-ratio: 16/9; border-radius: 0.75rem; }
+}
+
+/* Portfolio mobile fixes */
+@media screen and (max-width: 640px) {
+  .hero-gallery__item-content p { font-size: 0.75rem; }
+  .hero-gallery__item-hover { padding: 0.75rem; }
+}
 
   .hero-gallery__grid > .hero-gallery__layer {
     display:               grid;

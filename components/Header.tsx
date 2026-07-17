@@ -137,7 +137,7 @@ export default function Header() {
             <Image
               src="/Logoo.png"
               alt="Software Elites"
-              width={180}
+              width={100}
               height={48}
               className="h-11 w-auto object-contain
                          transition-transform duration-300 group-hover:scale-[1.03]"

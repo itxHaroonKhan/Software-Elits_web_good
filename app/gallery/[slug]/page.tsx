@@ -394,7 +394,7 @@ export default async function GalleryPage({
       </section>
 
       {/* Hero Image */}
-      <div className="w-full aspect-[21/8] overflow-hidden border-b border-white/[0.06]">
+      <div className="w-full aspect-[21/8] max-md:aspect-[16/7] max-sm:aspect-[2/1] overflow-hidden border-b border-white/[0.06]">
         <img
           src={page.image}
           alt={page.title}
@@ -465,7 +465,7 @@ export default async function GalleryPage({
 
       {/* Overview + Bullets */}
       <section className="border-b border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-14 md:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
             <div>

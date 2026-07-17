@@ -15,7 +15,8 @@ const inter = Inter({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
+  maximumScale: 1,
+  userScalable: false,
   themeColor: "#05050a",
 };
 
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
+    <html lang="en" className={`${inter.variable} h-full`} data-scroll-behavior="smooth">
       <body className="min-h-screen w-full bg-black text-white antialiased">
         <SmoothScroll />
         <Header />

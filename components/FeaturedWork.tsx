@@ -66,7 +66,7 @@ export default function FeaturedWork() {
 
         {/* ── Project rows ── */}
         <div className="flex flex-col pb-10 md:pb-14">
-          {projects.map((p, i) => (
+          {projects.map((p) => (
             <div
               key={p.slug}
               onMouseEnter={() => setHovered(p.slug)}
@@ -193,36 +193,6 @@ export default function FeaturedWork() {
                     </svg>
                   </div>
                 </div>
-
-                {/* Floating "GET IN TOUCH" circular badge — first project only */}
-                {i === 0 && (
-                  <Link
-                    href="/#contact"
-                    className="floating-cta !fixed !bottom-8 !left-8 !w-[90px] !h-[90px]"
-                    aria-label="Get in touch"
-                  >
-                    <div className="floating-cta__circle !border-white/20" />
-                    <div className="floating-cta__text">
-                      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                          <path id="cp" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1-74,0"/>
-                        </defs>
-                        <text>
-                          <textPath href="#cp" startOffset="0%">
-                            GET IN TOUCH • GET IN TOUCH •{" "}
-                          </textPath>
-                        </text>
-                      </svg>
-                    </div>
-                    <div className="floating-cta__arrow">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <path d="M3 15L15 3M15 3H7M15 3v8"
-                              stroke="#fff" strokeWidth="1.6"
-                              strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                  </Link>
-                )}
               </div>
 
             </div>

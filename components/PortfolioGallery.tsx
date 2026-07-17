@@ -30,17 +30,18 @@ export default function PortfolioGallery({
   return (
     <>
       {/* ── Grid ── */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
         {images.map((img, i) => (
           <button
             key={i}
             onClick={() => setOpen(i)}
-            className="rounded-2xl overflow-hidden border border-white/[0.07] bg-[#0a0a12]
+            className="rounded-xl md:rounded-2xl overflow-hidden border border-white/[0.07] bg-[#0a0a12]
                        cursor-zoom-in group relative"
           >
             <img
               src={img}
               alt={`${title} — image ${i + 1}`}
+              loading="lazy"
               className="w-full h-auto object-contain opacity-90
                          group-hover:opacity-100 group-hover:scale-[1.02]
                          transition-all duration-400"
@@ -69,11 +70,11 @@ export default function PortfolioGallery({
           {/* Close */}
           <button
             onClick={() => setOpen(null)}
-            className="absolute top-5 right-5 z-10
-                       w-10 h-10 rounded-full bg-white/10 hover:bg-white/20
+            className="absolute top-4 right-4 md:top-5 md:right-5 z-10
+                       w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/10 hover:bg-white/20
                        flex items-center justify-center transition-colors duration-200"
           >
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
           </button>
@@ -81,18 +82,18 @@ export default function PortfolioGallery({
           {/* Prev */}
           <button
             onClick={(e) => { e.stopPropagation(); setOpen((open - 1 + images.length) % images.length); }}
-            className="absolute left-4 z-10
-                       w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+            className="absolute left-3 md:left-4 z-10
+                       w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/10 hover:bg-white/20
                        flex items-center justify-center transition-colors duration-200"
           >
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
             </svg>
           </button>
 
           {/* Image */}
           <div
-            className="max-w-5xl max-h-[85vh] px-16"
+            className="max-w-5xl max-h-[85vh] px-12 md:px-16"
             onClick={(e) => e.stopPropagation()}
           >
             <img
@@ -109,11 +110,11 @@ export default function PortfolioGallery({
           {/* Next */}
           <button
             onClick={(e) => { e.stopPropagation(); setOpen((open + 1) % images.length); }}
-            className="absolute right-4 z-10
-                       w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+            className="absolute right-3 md:right-4 z-10
+                       w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/10 hover:bg-white/20
                        flex items-center justify-center transition-colors duration-200"
           >
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <svg className="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
           </button>
