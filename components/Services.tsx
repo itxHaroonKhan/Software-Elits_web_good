@@ -57,21 +57,21 @@ const services = [
     id:    "08",
     title: "Logo & Branding",
     desc:  "Distinctive brand identities that tell your story at a glance.",
-    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600&h=400&fit=crop",
     accent: "default",
   },
   {
     id:    "09",
     title: "WordPress Development",
     desc:  "Custom WordPress builds that are as powerful as they are manageable.",
-    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1620287341056-49a2f1ab2fdc?q=80&w=600&h=400&fit=crop",
     accent: "badge",
   },
   {
     id:    "10",
     title: "Website Maintenance",
     desc:  "24/7 monitoring, updates, backups, and security for peace of mind.",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&h=400&fit=crop",
     accent: "cyan",
   },
   {
@@ -129,9 +129,9 @@ export default function Services() {
           </div>
         </div>
 
-        {/* ── 3×4 Bento Grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((s) => {
+        {/* ── Featured Services (4) ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {services.slice(0, 4).map((s) => {
             const isHovered = hoveredId === s.id;
 
             return (

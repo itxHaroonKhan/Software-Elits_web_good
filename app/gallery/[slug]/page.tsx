@@ -180,7 +180,7 @@ const galleryPages: Record<string, {
     title: "Branding & Identity",
     tagline: "A brand that means something — and gets remembered.",
     desc: "From naming and strategy through to full visual identity systems, we help businesses define who they are and express it consistently across every touchpoint. Whether you're launching a new brand or refreshing an existing one, we make it count.",
-    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=1200&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1200&h=600&fit=crop",
     tags: ["Brand Strategy", "Logo Design", "Design Systems", "Typography", "Figma"],
     stats: [{ value: "200+", label: "Brands Launched" }, { value: "4.9★", label: "Client Rating" }, { value: "100%", label: "On-Brand Delivery" }, { value: "2wk", label: "Identity Sprint" }],
     bullets: [
@@ -264,7 +264,7 @@ const galleryPages: Record<string, {
     title: "FinTech Solutions",
     tagline: "Financial software built for compliance and scale.",
     desc: "We build trading platforms, payment systems, and financial dashboards for fintech companies and financial institutions. Security, compliance, and real-time performance aren't optional — they're the baseline.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1200&h=600&fit=crop",
     tags: ["React", "Node.js", "WebSockets", "PostgreSQL", "PCI-DSS", "FCA"],
     stats: [{ value: "2M+", label: "Events/Second" }, { value: "<50ms", label: "Data Latency" }, { value: "PCI-DSS", label: "Compliant" }, { value: "£2.4M+", label: "Cost Saved" }],
     bullets: [
@@ -306,7 +306,7 @@ const galleryPages: Record<string, {
     title: "EdTech & Education Platforms",
     tagline: "Learning experiences that actually work.",
     desc: "We build LMS platforms, interactive learning tools, and student management systems for education companies and institutions. Engaging UI, progress tracking, and adaptive content delivery — all in one platform.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&h=600&fit=crop",
     tags: ["React", "Node.js", "Video Streaming", "WebRTC", "PostgreSQL", "Stripe"],
     stats: [{ value: "200K+", label: "Learners Served" }, { value: "+45%", label: "Course Completion" }, { value: "4.9★", label: "Learner Rating" }, { value: "SCORM", label: "Compatible" }],
     bullets: [
@@ -334,7 +334,7 @@ const galleryPages: Record<string, {
     title: "WordPress Development",
     tagline: "Fast, secure WordPress sites your team can manage.",
     desc: "We build bespoke WordPress themes, headless WordPress setups, and high-performance WooCommerce stores. We deliver sites that your marketing team can actually update — without breaking anything.",
-    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1620287341056-49a2f1ab2fdc?q=80&w=1200&h=600&fit=crop",
     tags: ["WordPress", "WooCommerce", "ACF", "Gutenberg", "PHP", "Headless WP"],
     stats: [{ value: "90+", label: "PageSpeed Score" }, { value: "2s", label: "Load Time" }, { value: "CMS", label: "Easy to Edit" }, { value: "99.9%", label: "Uptime" }],
     bullets: [

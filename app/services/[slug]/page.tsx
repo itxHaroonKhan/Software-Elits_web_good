@@ -10,7 +10,7 @@ const services: Record<string, {
     title: "Custom Software Development",
     tagline: "Bespoke platforms engineered to your exact specification.",
     desc: "We design and build software from the ground up — web apps, enterprise platforms, internal tools, and API layers. Every project starts with deep discovery: we learn your domain, understand your constraints, and architect a solution that fits your business today and scales with it tomorrow.",
-    image: "https://www.charle.co.uk/assets/images/navigation/nav-services-cta.webp",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&h=600&fit=crop",
     tags: ["React", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "AWS"],
     bullets: [
       { heading: "Full-Stack Web Applications", text: "End-to-end development of complex, high-traffic web applications with modern frontend frameworks and robust backend APIs." },
@@ -23,7 +23,7 @@ const services: Record<string, {
     title: "Web & Mobile App Development",
     tagline: "Cross-platform applications that users love.",
     desc: "From consumer-facing apps to complex B2B tools, we build web and mobile products that are fast, reliable, and intuitive. Our teams work across React, Next.js, and React Native — shipping products that perform well on every device and every connection speed.",
-    image: "https://www.charle.co.uk/articles/guide-to-ab-split-testing/images/thumb.jpg",
+    image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?q=80&w=1200&h=600&fit=crop",
     tags: ["React", "Next.js", "React Native", "Expo", "TypeScript", "iOS", "Android"],
     bullets: [
       { heading: "React & Next.js Web Apps", text: "Server-rendered, edge-cached, and blazing fast — web apps that score 95+ on Core Web Vitals and convert." },
@@ -36,7 +36,7 @@ const services: Record<string, {
     title: "AI & Machine Learning",
     tagline: "Intelligent systems that give your business an edge.",
     desc: "We build production-ready AI features and ML models — not demos, not prototypes. From LLM integrations to custom training pipelines, we help companies move from idea to production AI without the hype or the hallucinations.",
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid8.webp",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&h=600&fit=crop",
     tags: ["Python", "FastAPI", "PyTorch", "LangChain", "OpenAI", "AWS SageMaker"],
     bullets: [
       { heading: "LLM Integration & Fine-Tuning", text: "Integrate GPT-4, Claude, or open-source LLMs into your product with proper prompt engineering, retrieval augmentation, and guardrails." },
@@ -49,7 +49,7 @@ const services: Record<string, {
     title: "Cloud Infrastructure & DevOps",
     tagline: "Scalable infrastructure built for reliability and speed.",
     desc: "We design, build, and manage the cloud infrastructure that your software runs on. From initial AWS account setup to complex multi-region Kubernetes clusters, we eliminate ops toil and give your team the confidence to ship fast.",
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid6.webp",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1200&h=600&fit=crop",
     tags: ["AWS", "Terraform", "Docker", "Kubernetes", "GitHub Actions", "Datadog"],
     bullets: [
       { heading: "Cloud Architecture", text: "Right-sized, well-architected AWS environments designed for your specific scale, compliance, and cost requirements." },
@@ -62,7 +62,7 @@ const services: Record<string, {
     title: "UI/UX Design",
     tagline: "Design that converts, delights, and differentiates.",
     desc: "Great software starts with great design. Our designers work closely alongside engineers from day one — not as a separate phase, but as an integrated part of delivery. We produce design systems, prototypes, and finished specs that engineers can build without ambiguity.",
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid3.webp",
+    image: "https://images.unsplash.com/photo-1559028006-448665bd7c7f?q=80&w=1200&h=600&fit=crop",
     tags: ["Figma", "User Research", "Prototyping", "Design Systems", "WCAG 2.1"],
     bullets: [
       { heading: "Product Discovery", text: "User interviews, competitive analysis, and jobs-to-be-done workshops to ensure we're solving the right problem." },
@@ -101,7 +101,7 @@ const services: Record<string, {
     title: "WordPress Development",
     tagline: "Custom WordPress builds that are powerful and manageable.",
     desc: "We build custom WordPress websites that go far beyond themes — bespoke Gutenberg blocks, custom post types, ACF-powered content models, and performance-optimised architecture. The result is a site your team can manage without touching code.",
-    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1620287341056-49a2f1ab2fdc?q=80&w=1200&h=600&fit=crop",
     tags: ["WordPress", "PHP", "ACF Pro", "Gutenberg", "WooCommerce", "REST API"],
     bullets: [
       { heading: "Custom Theme Development", text: "Built from scratch to your design — no bloated page builders, no plugin dependency nightmares." },
@@ -127,7 +127,7 @@ const services: Record<string, {
     title: "Logo & Branding",
     tagline: "Distinctive brand identities that tell your story at a glance.",
     desc: "A great brand is more than a logo — it is a complete visual language. We develop brand identities that are distinctive, scalable, and consistent across every touchpoint. From the initial concept through to brand guidelines, we deliver everything you need to launch with confidence.",
-    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=1200&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1200&h=600&fit=crop",
     tags: ["Figma", "Illustrator", "Photoshop", "Brand Strategy", "Typography", "Colour Systems"],
     bullets: [
       { heading: "Logo Design", text: "Primary, secondary, and icon variants of your logo — delivered in all formats for print and digital." },
@@ -194,8 +194,9 @@ export function generateStaticParams() {
   return Object.keys(services).map((slug) => ({ slug }));
 }
 
-export default function ServicePage({ params }: { params: { slug: string } }) {
-  const s = services[params.slug];
+export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const s = services[slug];
   if (!s) notFound();
 
   return (

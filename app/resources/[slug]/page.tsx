@@ -10,7 +10,7 @@ const articles: Record<string, {
     title: "Next.js Architecture at Scale: Lessons from 50 Production Deployments",
     category: "Engineering", date: "May 2025", readTime: "8 min read",
     excerpt: "After deploying Next.js apps for 50+ clients across e-commerce, SaaS, and enterprise, here are the patterns that consistently deliver performance at scale.",
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid1.webp",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&h=675&fit=crop",
     body: [
       "Deploying Next.js at scale is not about following the docs — it is about knowing which defaults to override and which patterns break under production load. After 50+ deployments, we have learned what works.",
       "The single biggest performance lever is proper cache strategy. Next.js gives you ISR, static generation, and server components — but using the wrong one for the wrong page can tank your Core Web Vitals. Static pages should be static, dynamic user-specific pages should be server-rendered, and shared-but-not-realtime pages should use ISR with a short revalidation window.",
@@ -23,7 +23,7 @@ const articles: Record<string, {
     title: "5 LLM Integration Pitfalls That Will Kill Your Production App",
     category: "AI & ML", date: "Apr 2025", readTime: "11 min read",
     excerpt: "Token limits, hallucinations, latency spikes, cost overruns — and prompt injection. How to avoid every one of them.",
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid8.webp",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&h=675&fit=crop",
     body: [
       "Integrating an LLM into a production app is not hard. Integrating one that stays reliable, affordable, and secure under real traffic is. Here are the five mistakes we see in nearly every first-time LLM integration.",
       "Pitfall 1: No token budget. Every request without a max_tokens cap is a ticking cost bomb. A single runaway prompt can cost more than your entire daily budget. Always set explicit limits and model the worst-case token consumption before you ship.",
@@ -37,7 +37,7 @@ const articles: Record<string, {
     title: "The Definitive AWS Cost Optimisation Guide for Growing Startups",
     category: "Cloud & DevOps", date: "Mar 2025", readTime: "14 min read",
     excerpt: "We cut one client's AWS bill by 60% in three weeks. Here's the exact playbook.",
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid6.webp",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&h=675&fit=crop",
     body: [
       "AWS bills grow faster than engineering teams expect. The default settings, the convenience choices made at 2am, and the test resources nobody deleted — they compound. Here is the playbook we use to systematically cut costs without touching production stability.",
       "Step 1: Enable AWS Cost Explorer and set up billing alerts immediately. You cannot optimise what you cannot see. Tag every resource by environment, team, and feature from day one. Untagged resources are the black holes of cloud spending.",
@@ -51,7 +51,7 @@ const articles: Record<string, {
     title: "React Native vs Flutter in 2025: An Honest Engineering Comparison",
     category: "Mobile", date: "Feb 2025", readTime: "9 min read",
     excerpt: "We've shipped apps in both. A framework-agnostic comparison of performance, DX, and long-term maintainability.",
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid4.webp",
+    image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?q=80&w=1200&h=675&fit=crop",
     body: [
       "We have shipped production apps in both React Native and Flutter. Here is an honest comparison — not a marketing piece for either framework.",
       "Performance: Flutter wins on raw frame performance due to its custom rendering engine (Impeller). React Native's new architecture (bridgeless, JSI, Fabric) has closed the gap significantly, but for animation-heavy or graphics-intensive apps, Flutter still edges ahead.",
@@ -65,7 +65,7 @@ const articles: Record<string, {
     title: "Headless Commerce: When It's Worth It (and When It's Not)",
     category: "Commerce", date: "Jan 2025", readTime: "7 min read",
     excerpt: "Headless is not always the answer. We break down the real trade-offs so you can make the right call.",
-    image: "https://www.charle.co.uk/articles/guide-to-ab-split-testing/images/thumb.jpg",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&h=675&fit=crop",
     body: [
       "Headless commerce is pitched as the answer to everything. It's not. It's a powerful architectural pattern with real trade-offs that teams consistently underestimate.",
       "When headless makes sense: You need complete control over frontend performance. You are building a branded experience that Shopify's theme engine cannot deliver. You have a complex multi-channel requirement — same product catalog, multiple storefronts. You have the engineering capacity to maintain a custom frontend.",
@@ -79,7 +79,7 @@ const articles: Record<string, {
     title: "Building HIPAA-Compliant Cloud Architecture on AWS: A Practical Guide",
     category: "Healthcare", date: "Dec 2024", readTime: "16 min read",
     excerpt: "BAAs, encryption at rest, audit logging, VPC isolation — everything you need to pass a real compliance audit.",
-    image: "https://www.charle.co.uk/assets/images/home/grid/grid3.webp",
+    image: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=1200&h=675&fit=crop",
     body: [
       "HIPAA compliance on AWS is achievable, but it requires intentional architecture decisions from day one. Retrofitting compliance onto an existing system is expensive and error-prone. Here is the practical guide.",
       "Step 1: Sign a BAA with AWS. AWS offers a Business Associate Agreement that covers a specific set of HIPAA-eligible services. Any service storing or processing PHI must be in scope. Services not covered by the BAA cannot touch PHI — even for logging.",
